@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:new_bos_app/common/global.dart';
 import 'package:new_bos_app/common/removeAccent.dart';
 import 'package:new_bos_app/custom/loading.dart';
+import 'package:new_bos_app/icons/yvan_icons.dart';
 import 'package:new_bos_app/orders/final.dart';
 import 'package:new_bos_app/orders/payment1.dart';
 import 'package:new_bos_app/payment/mtn.dart';
@@ -467,7 +468,7 @@ class _Payment2PageState extends State<Payment2Page> {
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
           icon: Icon(
-            Icons.arrow_back,
+            YvanIcons.left_arrow,
             color: Colors.black,
           ),
         ),

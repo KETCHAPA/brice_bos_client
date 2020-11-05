@@ -22,7 +22,7 @@ class _SettingsPageState extends State<SettingsPage> {
       appBar: AppBar(
         leading: IconButton(
             icon: Icon(
-              Icons.arrow_back,
+              YvanIcons.left_arrow_1,
               color: Colors.black,
             ),
             onPressed: () => Navigator.pop(context)),
@@ -44,7 +44,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       color: Colors.black))),
           ListTile(
             leading: Icon(
-              Icons.developer_board,
+              YvanIcons.community_line,
               size: size(context).height / 30.0,
             ),
             title: Text('Conditions Generales d\'utilisation de l\'application',
@@ -85,7 +85,7 @@ class _SettingsPageState extends State<SettingsPage> {
             },
             child: ListTile(
               leading: Icon(
-                Icons.mode_edit,
+                YvanIcons.edit_2_line,
                 size: size(context).height / 30.0,
               ),
               title: Text('consulter le mode d\'utilisation',

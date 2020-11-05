@@ -9,6 +9,7 @@ import 'package:new_bos_app/common/ENDPOINT.dart';
 import 'package:new_bos_app/common/global.dart';
 import 'package:new_bos_app/custom/sweetAlert.dart';
 import 'package:new_bos_app/home/router.dart';
+import 'package:new_bos_app/icons/yvan_icons.dart';
 import 'package:new_bos_app/model/categories.dart';
 import 'package:new_bos_app/products/all.dart';
 import 'package:new_bos_app/services/categoryService.dart';
@@ -123,7 +124,7 @@ class _AllCategoryPageState extends State<AllCategoryPage> {
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
           icon: Icon(
-            Icons.arrow_back,
+            YvanIcons.left_arrow_1,
             color: Colors.black,
           ),
         ),
@@ -135,7 +136,8 @@ class _AllCategoryPageState extends State<AllCategoryPage> {
         actions: [
           IconButton(
               icon: Icon(
-                Icons.search,
+                YvanIcons.loupe,
+                size: size(context).height / 40.0,
                 color: Colors.black,
               ),
               onPressed: _searchRedirection)

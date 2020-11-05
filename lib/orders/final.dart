@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:new_bos_app/common/global.dart';
 import 'package:new_bos_app/home/router.dart';
+import 'package:new_bos_app/icons/yvan_icons.dart';
 import 'package:new_bos_app/services/commandService.dart';
 
 class DeliveryPage extends StatefulWidget {
@@ -45,7 +46,7 @@ class _DeliveryPageState extends State<DeliveryPage> {
             onPressed: () => Navigator.push(
                 context, MaterialPageRoute(builder: (context) => RouterPage())),
             icon: Icon(
-              Icons.arrow_back,
+              YvanIcons.left_arrow_1,
               color: Colors.black,
             ),
           ),

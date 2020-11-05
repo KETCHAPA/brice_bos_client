@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
-import 'package:new_bos_app/addons/mail.dart';
 import 'package:new_bos_app/addons/search.dart';
 import 'package:new_bos_app/categories/all.dart';
 import 'package:new_bos_app/common/global.dart';
@@ -118,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                 leading: IconButton(
                   onPressed: () {},
                   icon: Icon(
-                    Icons.arrow_back,
+                    YvanIcons.left_arrow_1,
                     color: Colors.black,
                   ),
                 ),
@@ -297,25 +296,14 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () => _searchRedirection,
                     icon: Icon(
                       YvanIcons.loupe,
-                      color: Colors.black,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => NewMailPage()));
-                    },
-                    icon: Icon(
-                      YvanIcons.email,
+                      size: size(context).height / 40.0,
                       color: Colors.black,
                     ),
                   ),
                   IconButton(
                     onPressed: () => Navigator.pushNamed(context, 'favorites'),
                     icon: Icon(
-                      YvanIcons.heart,
+                      YvanIcons.add_to_favorite,
                       color: Colors.black,
                     ),
                   ),
@@ -367,7 +355,7 @@ class _HomePageState extends State<HomePage> {
                             MaterialPageRoute(
                                 builder: (context) => AllCategoryPage())),
                         child: Icon(
-                          Icons.arrow_right,
+                          YvanIcons.arrow_drop_right_line,
                           color: Colors.black,
                         ),
                       )
@@ -680,7 +668,7 @@ class _HomePageState extends State<HomePage> {
                                           children: [
                                             Counter(),
                                             Icon(
-                                              Icons.arrow_right,
+                                              YvanIcons.arrow_drop_right_line,
                                               color: Colors.black,
                                             ),
                                           ],
@@ -715,9 +703,9 @@ class _HomePageState extends State<HomePage> {
                                                     MaterialPageRoute(
                                                         builder: (context) =>
                                                             AllProductPage(
-                                                                products:
-                                                              _flashSalesData,
-                                                                )))
+                                                              products:
+                                                                  _flashSalesData,
+                                                            )))
                                                 : Navigator.push(
                                                     context,
                                                     MaterialPageRoute(
@@ -943,7 +931,7 @@ class _HomePageState extends State<HomePage> {
                                                 size(context).height / 40.0),
                                       ),
                                       Icon(
-                                        Icons.arrow_right,
+                                        YvanIcons.arrow_drop_right_line,
                                         color: Colors.black,
                                       )
                                     ],

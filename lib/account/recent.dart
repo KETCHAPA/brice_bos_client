@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:new_bos_app/common/global.dart';
+import 'package:new_bos_app/icons/yvan_icons.dart';
 import 'package:new_bos_app/products/show.dart';
 
 class RecentlyProductPage extends StatefulWidget {
@@ -16,7 +17,7 @@ class _RecentlyProductPageState extends State<RecentlyProductPage> {
           leading: IconButton(
             onPressed: () => Navigator.pop(context),
             icon: Icon(
-              Icons.arrow_back,
+              YvanIcons.left_arrow_1,
               color: Colors.black,
             ),
           ),
@@ -92,7 +93,7 @@ class _RecentlyProductPageState extends State<RecentlyProductPage> {
                                                 shape: BoxShape.circle,
                                                 color: Colors.white),
                                             child: Icon(
-                                              Icons.delete_outline,
+                                              YvanIcons.delete,
                                               color: Colors.black54,
                                               size: size(context).height / 50,
                                             )),

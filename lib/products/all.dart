@@ -106,7 +106,7 @@ class _AllProductPageState extends State<AllProductPage> {
             backgroundColor: Colors.white,
             leading: IconButton(
               icon: Icon(
-                Icons.arrow_back,
+                YvanIcons.left_arrow_1,
                 color: Colors.black,
               ),
               onPressed: widget.category == null &&
@@ -127,13 +127,14 @@ class _AllProductPageState extends State<AllProductPage> {
                 icon: Icon(
                   YvanIcons.loupe,
                   color: Colors.black,
+                  size: size(context).height / 40.0,
                 ),
               ),
               IconButton(
                   icon: Stack(
                     children: [
                       Icon(
-                        Icons.shopping_basket,
+                        YvanIcons.bag,
                         color: Colors.black,
                       ),
                       Positioned(
@@ -350,7 +351,7 @@ class _ViewState extends State<View> {
                                                   data[index].description) &&
                                               favoriteNames
                                                   .contains(data[index].name)
-                                          ? Icons.favorite
+                                          ? YvanIcons.heart
                                           : Icons.favorite_border,
                                       color: favoriteDescriptions.contains(
                                                   data[index].description) &&

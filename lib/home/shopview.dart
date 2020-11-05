@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:new_bos_app/common/global.dart';
+import 'package:new_bos_app/icons/yvan_icons.dart';
 import 'package:new_bos_app/products/all.dart';
 import 'package:new_bos_app/shop/all.dart';
 
@@ -39,7 +40,7 @@ class _ShopViewState extends State<ShopView> {
                       onTap: () => Navigator.push(context,
                           MaterialPageRoute(builder: (context) => ShopPage())),
                       child: Icon(
-                        Icons.arrow_right,
+                        YvanIcons.arrow_drop_right_line,
                         color: Colors.black,
                       ),
                     )
@@ -156,7 +157,7 @@ class _ShopViewState extends State<ShopView> {
                                     alignment: Alignment.center,
                                     height: size(context).height / 20.0,
                                     child: Icon(
-                                      Icons.favorite_border,
+                                      YvanIcons.heart,
                                       color: Colors.black,
                                       size: size(context).height / 50.0,
                                     ),

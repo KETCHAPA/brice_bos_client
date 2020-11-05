@@ -3,6 +3,7 @@ import 'package:new_bos_app/auth/register.dart';
 import 'package:new_bos_app/common/global.dart';
 import 'package:new_bos_app/custom/loading.dart';
 import 'package:new_bos_app/custom/sweetAlert.dart';
+import 'package:new_bos_app/icons/yvan_icons.dart';
 import 'package:new_bos_app/services/authentication.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:sweetalert/sweetalert.dart';
@@ -131,7 +132,7 @@ class _LoginPageState extends State<LoginPage> {
                         },
                         decoration: InputDecoration(
                             suffixIcon: Icon(
-                              Icons.account_circle,
+                              YvanIcons.user_6_line,
                               color: Colors.black,
                               size: size(context).height / 40.0,
                             ),

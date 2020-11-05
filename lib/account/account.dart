@@ -48,7 +48,7 @@ class _AccountPageState extends State<AccountPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Icon(
-                            Icons.arrow_back,
+                            YvanIcons.left_arrow_1,
                             color: Colors.black,
                           ),
                           Spacer(),
@@ -61,7 +61,7 @@ class _AccountPageState extends State<AccountPage> {
                               padding: EdgeInsets.symmetric(
                                   horizontal: size(context).height / 50.0),
                               child: Icon(
-                                Icons.settings,
+                                YvanIcons.settings_line,
                                 color: Colors.black,
                               ),
                             ),
@@ -71,7 +71,7 @@ class _AccountPageState extends State<AccountPage> {
                             child: Stack(
                               children: [
                                 Icon(
-                                  Icons.shopping_basket,
+                                  YvanIcons.bag,
                                   color: Colors.black,
                                 ),
                                 Positioned(
@@ -302,7 +302,7 @@ class _AccountPageState extends State<AccountPage> {
                                                 )));
                                   },
                             child: Icon(
-                              Icons.arrow_right,
+                              YvanIcons.arrow_drop_right_line,
                               color:
                                   !isLoggedIn ? Colors.black45 : Colors.black,
                               size: size(context).height / 40.0,
@@ -332,7 +332,7 @@ class _AccountPageState extends State<AccountPage> {
                                   color: !isLoggedIn
                                       ? Colors.black45
                                       : Colors.black,
-                                  size: size(context).height / 17.0,
+                                  size: size(context).height / 30.0,
                                 ),
                                 Text(
                                   'En Attente',
@@ -361,7 +361,7 @@ class _AccountPageState extends State<AccountPage> {
                                   color: !isLoggedIn
                                       ? Colors.black45
                                       : Colors.black,
-                                  size: size(context).height / 17.0,
+                                  size: size(context).height / 30.0,
                                 ),
                                 Text(
                                   'En Route',
@@ -391,7 +391,7 @@ class _AccountPageState extends State<AccountPage> {
                                   color: !isLoggedIn
                                       ? Colors.black45
                                       : Colors.black,
-                                  size: size(context).height / 17.0,
+                                  size: size(context).height / 30.0,
                                 ),
                                 Text(
                                   'Retour & SAV',
@@ -501,7 +501,7 @@ class _AccountPageState extends State<AccountPage> {
                                                   width:
                                                       size(context).width / 7,
                                                   child: Icon(
-                                                    Icons.message,
+                                                    YvanIcons.message_2_line,
                                                     color: !isLoggedIn
                                                         ? Colors.black45
                                                         : Colors.black,
@@ -537,7 +537,7 @@ class _AccountPageState extends State<AccountPage> {
                             child: ListTile(
                               contentPadding: EdgeInsets.zero,
                               leading: Icon(
-                                Icons.radio,
+                                YvanIcons.brand,
                                 color:
                                     !isLoggedIn ? Colors.black45 : Colors.black,
                                 size: size(context).height / 30.0,
@@ -591,7 +591,7 @@ class _AccountPageState extends State<AccountPage> {
                             child: ListTile(
                               contentPadding: EdgeInsets.zero,
                               leading: Icon(
-                                Icons.account_balance,
+                                YvanIcons.add_to_favorite,
                                 color:
                                     !isLoggedIn ? Colors.black45 : Colors.black,
                                 size: size(context).height / 30.0,
@@ -621,7 +621,7 @@ class _AccountPageState extends State<AccountPage> {
                             child: ListTile(
                               contentPadding: EdgeInsets.zero,
                               leading: Icon(
-                                Icons.ac_unit,
+                                YvanIcons.refresh_line,
                                 color: Colors.black,
                                 size: size(context).height / 30.0,
                               ),
@@ -643,7 +643,7 @@ class _AccountPageState extends State<AccountPage> {
                             child: ListTile(
                               contentPadding: EdgeInsets.zero,
                               leading: Icon(
-                                Icons.favorite,
+                                YvanIcons.heart,
                                 color: Colors.black,
                                 size: size(context).height / 30.0,
                               ),
@@ -679,7 +679,7 @@ class _AccountPageState extends State<AccountPage> {
                             child: ListTile(
                               contentPadding: EdgeInsets.zero,
                               leading: Icon(
-                                Icons.send,
+                                YvanIcons.send_plane_fill,
                                 color: Colors.black,
                                 size: size(context).height / 30.0,
                               ),

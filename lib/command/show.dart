@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:new_bos_app/common/ENDPOINT.dart';
 import 'package:new_bos_app/common/global.dart' as globals;
 import 'package:new_bos_app/custom/loading.dart';
+import 'package:new_bos_app/icons/yvan_icons.dart';
 import 'package:new_bos_app/services/appService.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
@@ -156,7 +157,7 @@ class _ShowCommandState extends State<ShowCommand>
           style: TextStyle(color: Colors.black),
         )),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: Icon(YvanIcons.left_arrow_1, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -433,7 +434,7 @@ class _ShopPageDetailsState extends State<ShopPageDetails> {
                                     launchPhoneCall(phone: '${admin['phone']}'),
                                 child: Row(
                                   children: <Widget>[
-                                    Icon(Icons.phone),
+                                    Icon(YvanIcons.phone_line),
                                     SizedBox(
                                       width: 5.0,
                                     ),

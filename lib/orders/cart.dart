@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:new_bos_app/auth/login.dart';
 import 'package:new_bos_app/common/global.dart';
 import 'package:new_bos_app/custom/sweetAlert.dart';
-import 'package:new_bos_app/orders/checkout.dart';
+import 'package:new_bos_app/icons/yvan_icons.dart';
+import 'package:new_bos_app/orders/checkout_new.dart';
 import 'package:sweetalert/sweetalert.dart';
 
 class CartPage extends StatefulWidget {
@@ -46,7 +47,7 @@ class _CartPageState extends State<CartPage> {
           leading: IconButton(
             onPressed: () {},
             icon: Icon(
-              Icons.arrow_back,
+              YvanIcons.left_arrow_1,
               color: Colors.black,
             ),
           ),
@@ -58,7 +59,8 @@ class _CartPageState extends State<CartPage> {
           actions: [
             IconButton(
                 icon: Icon(
-                  Icons.delete,
+                  YvanIcons.delete,
+                  size: size(context).height / 40.0,
                   color: Colors.black,
                 ),
                 onPressed: () {
@@ -114,7 +116,8 @@ class _CartPageState extends State<CartPage> {
                                                 type: SweetAlertStyle.confirm)
                                             : FloatingActionButton.extended(
                                                 icon: Icon(
-                                                  Icons.attach_money,
+                                                  YvanIcons
+                                                      .money_dollar_circle_line,
                                                   color: Colors.orange,
                                                   size: size(context).height /
                                                       50.0,
@@ -134,7 +137,7 @@ class _CartPageState extends State<CartPage> {
                                                     context,
                                                     MaterialPageRoute(
                                                         builder: (context) =>
-                                                            CheckOutPage(
+                                                            CheckOutNew(
                                                                 userId:
                                                                     userSnapshot
                                                                             .data[
@@ -150,7 +153,7 @@ class _CartPageState extends State<CartPage> {
                                     })
                                 : FloatingActionButton.extended(
                                     icon: Icon(
-                                      Icons.verified_user,
+                                      YvanIcons.user_6_line,
                                       color: Colors.orange,
                                       size: size(context).height / 50.0,
                                     ),

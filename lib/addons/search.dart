@@ -2,6 +2,7 @@ import 'package:flappy_search_bar/search_bar_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flappy_search_bar/flappy_search_bar.dart';
 import 'package:new_bos_app/common/global.dart';
+import 'package:new_bos_app/icons/yvan_icons.dart';
 import 'package:new_bos_app/model/data.dart';
 import 'package:new_bos_app/services/searchService.dart';
 
@@ -103,7 +104,7 @@ class _SearchPageState extends State<SearchPage> {
                 backgroundColor: Colors.grey.withOpacity(.2),
                 borderRadius: BorderRadius.all(Radius.circular(60.0)),
                 padding: EdgeInsets.symmetric(horizontal: 20.0)),
-            icon: Icon(Icons.search),
+            icon: Icon(YvanIcons.loupe),
             hintText: 'Recherche...',
             cancellationWidget: Text('Annuler'),
             debounceDuration: Duration(milliseconds: 800),
@@ -152,7 +153,7 @@ class _SearchPageState extends State<SearchPage> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Icon(
-                                    Icons.chevron_right,
+                                    YvanIcons.arrow_drop_right_line,
                                     size: 14.0,
                                     color: Colors.black,
                                   ),
@@ -169,7 +170,7 @@ class _SearchPageState extends State<SearchPage> {
                                       : Row(
                                           children: <Widget>[
                                             Icon(
-                                              Icons.chevron_right,
+                                              YvanIcons.arrow_drop_right_line,
                                               size: 14.0,
                                               color: Colors.black,
                                             ),
@@ -206,7 +207,7 @@ class _SearchPageState extends State<SearchPage> {
                                                         fontSize: 12.0),
                                                   ),
                                                   Icon(
-                                                    Icons.chevron_right,
+                                                    YvanIcons.arrow_drop_right_line,
                                                     size: 12.0,
                                                     color: Colors.black,
                                                   ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:new_bos_app/auth/register.dart';
 import 'package:new_bos_app/common/global.dart';
 import 'package:new_bos_app/home/home.dart';
+import 'package:new_bos_app/icons/yvan_icons.dart';
 
 class ChoicePage extends StatefulWidget {
   @override
@@ -131,7 +132,7 @@ class _ChoicePageState extends State<ChoicePage> {
                         'Ignorer',
                         style: TextStyle(color: Colors.white),
                       ),
-                      Icon(Icons.arrow_right, color: Colors.white)
+                      Icon(YvanIcons.arrow_drop_right_line, color: Colors.white)
                     ],
                   ),
                 ),

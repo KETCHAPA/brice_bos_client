@@ -4,6 +4,7 @@ import 'package:new_bos_app/common/global.dart';
 import 'package:new_bos_app/common/removeAccent.dart';
 import 'package:new_bos_app/custom/loading.dart';
 import 'package:new_bos_app/custom/sweetAlert.dart';
+import 'package:new_bos_app/icons/yvan_icons.dart';
 import 'package:new_bos_app/orders/final.dart';
 import 'package:new_bos_app/orders/payment2.dart';
 import 'package:new_bos_app/payment/mtn.dart';
@@ -282,7 +283,7 @@ class _PaymentPageState extends State<PaymentPage> {
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
           icon: Icon(
-            Icons.arrow_back,
+            YvanIcons.left_arrow_1,
             color: Colors.black,
           ),
         ),
@@ -608,7 +609,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                         children: <Widget>[
                                           Icon(
                                             index == isSelectedLivraison
-                                                ? Icons.check_box
+                                                ? YvanIcons.check_box
                                                 : Icons
                                                     .check_box_outline_blank,
                                             color:

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:new_bos_app/common/global.dart';
+import 'package:new_bos_app/icons/yvan_icons.dart';
 import 'package:new_bos_app/model/categories.dart';
 import 'package:new_bos_app/model/products.dart';
 import 'package:new_bos_app/services/appService.dart';
@@ -106,7 +107,7 @@ class _ShowProductState extends State<ShowProduct> {
                     child: Padding(
                       padding: EdgeInsets.only(top: size(context).height / 30),
                       child: Icon(
-                        Icons.arrow_back,
+                        YvanIcons.left_arrow_1,
                         color: Colors.black,
                       ),
                     ),
@@ -145,7 +146,7 @@ class _ShowProductState extends State<ShowProduct> {
                       icon: Stack(
                         children: [
                           Icon(
-                            Icons.shopping_basket,
+                            YvanIcons.bag,
                             color: Colors.black,
                           ),
                           Positioned(
@@ -189,7 +190,7 @@ class _ShowProductState extends State<ShowProduct> {
                                 favoriteDescriptions
                                     .contains(product.description)
                             ? Icons.favorite
-                            : Icons.favorite_border,
+                            : YvanIcons.heart,
                         color: favoriteNames.contains(product.name) &&
                                 favoriteDescriptions
                                     .contains(product.description)
@@ -399,7 +400,7 @@ class _ShowProductState extends State<ShowProduct> {
                                                     TextStyle(fontSize: 13.0),
                                               ),
                                               Icon(
-                                                Icons.arrow_forward_ios,
+                                                YvanIcons.arrow_drop_right_line,
                                                 size: 10.0,
                                               )
                                             ],
@@ -595,7 +596,7 @@ class _ShowProductState extends State<ShowProduct> {
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Icon(
-                                      Icons.shopping_basket,
+                                      YvanIcons.bag,
                                       color: Colors.white,
                                       size: size(context).height / 35.0,
                                     ),
@@ -660,7 +661,7 @@ class _ShowProductState extends State<ShowProduct> {
                   child: Padding(
                     padding: EdgeInsets.only(top: size(context).height / 30),
                     child: Icon(
-                      Icons.arrow_back,
+                      YvanIcons.left_arrow_1,
                       color: Colors.black,
                     ),
                   ),
@@ -677,7 +678,7 @@ class _ShowProductState extends State<ShowProduct> {
                     icon: Stack(
                       children: [
                         Icon(
-                          Icons.shopping_basket,
+                          YvanIcons.bag,
                           color: Colors.black,
                         ),
                         Positioned(
@@ -701,7 +702,7 @@ class _ShowProductState extends State<ShowProduct> {
                     onPressed: () {},
                     padding: EdgeInsets.only(top: size(context).height / 30),
                     icon: Icon(
-                      Icons.favorite,
+                      YvanIcons.heart,
                       color: Colors.black87,
                     )),
               ],

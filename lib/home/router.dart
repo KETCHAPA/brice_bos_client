@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:new_bos_app/account/account.dart';
 import 'package:new_bos_app/common/global.dart';
 import 'package:new_bos_app/home/home.dart';
+import 'package:new_bos_app/icons/yvan_icons.dart';
 import 'package:new_bos_app/orders/cart.dart';
 import 'package:new_bos_app/products/all.dart';
 
@@ -33,7 +34,8 @@ class _RouterPageState extends State<RouterPage> {
         builder: (context) {
           return AlertDialog(
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(size(context).height / 100)),
+                borderRadius:
+                    BorderRadius.circular(size(context).height / 100)),
             actions: <Widget>[
               FlatButton(
                 onPressed: () {
@@ -86,13 +88,14 @@ class _RouterPageState extends State<RouterPage> {
           unselectedItemColor: Colors.white,
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.home), title: Text('Home')),
+                icon: Icon(YvanIcons.home_line), title: Text('Home')),
             BottomNavigationBarItem(
-                icon: Icon(Icons.favorite), title: Text('Favoris')),
+                icon: Icon(YvanIcons.coupon), title: Text('Favoris')),
             BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_basket), title: Text('Panier')),
+                icon: Icon(YvanIcons.bag), title: Text('Panier')),
             BottomNavigationBarItem(
-                icon: Icon(Icons.account_circle), title: Text('Compte'))
+                icon: Icon(YvanIcons.user_6_line),
+                title: Text('Compte'))
           ]),
       body: WillPopScope(
         onWillPop: _onWillPop,

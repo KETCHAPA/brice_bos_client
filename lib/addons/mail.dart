@@ -65,7 +65,7 @@ class _NewMailPageState extends State<NewMailPage> {
               Navigator.pop(context);
             },
             child: Icon(
-              Icons.arrow_back,
+              YvanIcons.left_arrow_1,
               color: Colors.black,
             )),
         title: Text(
@@ -142,7 +142,7 @@ class _NewMailPageState extends State<NewMailPage> {
                                   Padding(
                                     padding: const EdgeInsets.only(right: 8.0),
                                     child: Icon(
-                                      Icons.keyboard_arrow_down,
+                                      YvanIcons.arrow_down_s_line,
                                       color: Colors.grey,
                                     ),
                                   )
@@ -193,7 +193,7 @@ class _NewMailPageState extends State<NewMailPage> {
                                 Padding(
                                   padding: const EdgeInsets.only(right: 8.0),
                                   child: Icon(
-                                    Icons.keyboard_arrow_down,
+                                    YvanIcons.arrow_down_s_line,
                                     color: Colors.grey,
                                   ),
                                 )

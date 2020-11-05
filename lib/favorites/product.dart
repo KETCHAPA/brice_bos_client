@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:new_bos_app/common/global.dart';
+import 'package:new_bos_app/icons/yvan_icons.dart';
 import 'package:new_bos_app/products/show.dart';
 
 class FavoriteProducts extends StatefulWidget {
@@ -16,7 +17,7 @@ class _FavoriteProductsState extends State<FavoriteProducts> {
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
           icon: Icon(
-            Icons.arrow_back,
+            YvanIcons.left_arrow_1,
             color: Colors.black,
           ),
         ),
@@ -28,7 +29,8 @@ class _FavoriteProductsState extends State<FavoriteProducts> {
         actions: [
           IconButton(
             icon: Icon(
-              Icons.restore_from_trash,
+              YvanIcons.delete_1,
+              size: size(context).height / 40.0,
               color: Colors.black,
             ),
             onPressed: () => setState(() {
@@ -104,7 +106,7 @@ class _FavoriteProductsState extends State<FavoriteProducts> {
                                               shape: BoxShape.circle,
                                               color: Colors.white),
                                           child: Icon(
-                                            Icons.delete_outline,
+                                            YvanIcons.delete,
                                             color: Colors.black54,
                                             size: size(context).height / 50,
                                           )),

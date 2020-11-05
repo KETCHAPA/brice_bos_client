@@ -8,6 +8,7 @@ import 'package:new_bos_app/auth/login.dart';
 import 'package:new_bos_app/common/global.dart';
 import 'package:new_bos_app/custom/loading.dart';
 import 'package:new_bos_app/custom/sweetAlert.dart';
+import 'package:new_bos_app/icons/yvan_icons.dart';
 import 'package:new_bos_app/services/authentication.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
@@ -147,7 +148,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 controller: _loginController,
                 decoration: InputDecoration(
                     suffixIcon: Icon(
-                      Icons.account_circle,
+                      YvanIcons.account_circle_line,
                       color: Colors.black,
                       size: size(context).height / 40.0,
                     ),
@@ -172,7 +173,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 obscureText: true,
                 decoration: InputDecoration(
                     suffixIcon: Icon(
-                      Icons.visibility_off,
+                      YvanIcons.key,
                       color: Colors.black,
                       size: size(context).height / 40.0,
                     ),
@@ -208,7 +209,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
                 decoration: InputDecoration(
                     suffixIcon: Icon(
-                      Icons.visibility_off,
+                      YvanIcons.key,
                       color: Colors.black,
                       size: size(context).height / 40.0,
                     ),
@@ -235,7 +236,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     },
                     decoration: InputDecoration(
                         suffixIcon: Icon(
-                          Icons.account_circle,
+                          YvanIcons.user_6_line,
                           color: Colors.black,
                           size: size(context).height / 40.0,
                         ),
@@ -260,7 +261,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     },
                     decoration: InputDecoration(
                         suffixIcon: Icon(
-                          Icons.visibility_off,
+                          YvanIcons.email,
                           color: Colors.black,
                           size: size(context).height / 40.0,
                         ),
@@ -295,7 +296,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         color: Colors.black, fontWeight: FontWeight.bold),
                     decoration: InputDecoration(
                         suffixIcon: Icon(
-                          Icons.visibility_off,
+                          YvanIcons.phone_line,
                           color: Colors.black,
                           size: size(context).height / 40.0,
                         ),
@@ -391,7 +392,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 Icon(
-                                  Icons.arrow_drop_down,
+                                  YvanIcons.arrow_drop_down_line,
                                   color: Colors.black.withOpacity(.8),
                                 ),
                               ],
@@ -515,7 +516,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         },
                         decoration: InputDecoration(
                             suffixIcon: Icon(
-                              Icons.account_circle,
+                              YvanIcons.address,
                               color: Colors.black,
                               size: size(context).height / 40.0,
                             ),
@@ -579,7 +580,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 Icon(
-                                  Icons.person_pin,
+                                  YvanIcons.gender,
                                   color: Colors.black.withOpacity(.8),
                                 ),
                               ],
@@ -678,7 +679,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                       child: Padding(
                                         padding: const EdgeInsets.all(3.0),
                                         child: Icon(
-                                          Icons.mode_edit,
+                                          YvanIcons.edit_2_line,
                                           size: 15.0,
                                           color: Colors.white,
                                         ),

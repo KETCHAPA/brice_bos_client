@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:new_bos_app/addons/search.dart';
 import 'package:new_bos_app/common/global.dart';
 import 'package:new_bos_app/custom/sweetAlert.dart';
+import 'package:new_bos_app/icons/yvan_icons.dart';
 import 'package:new_bos_app/model/shops.dart';
 import 'package:new_bos_app/products/all.dart';
 import 'package:new_bos_app/services/homeService.dart';
@@ -55,14 +56,14 @@ class _ShopPageState extends State<ShopPage> {
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
           icon: Icon(
-            Icons.arrow_back,
+            YvanIcons.left_arrow_1,
             color: Colors.black,
           ),
         ),
         centerTitle: true,
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.search),
+            icon: Icon(YvanIcons.loupe),
             color: Colors.black.withOpacity(.7),
             onPressed: () {
               Navigator.push(context,
@@ -162,25 +163,23 @@ class _ShopPageState extends State<ShopPage> {
                                                         size(context).height /
                                                             100),
                                                     decoration: BoxDecoration(
-                                                        shape:
-                                                            BoxShape.circle,
+                                                        shape: BoxShape.circle,
                                                         color: Colors.white),
                                                     child: Icon(
                                                       favoritesShops.contains(
-                                                              snapshot.data[
-                                                                  index])
-                                                          ? Icons.favorite
+                                                              snapshot
+                                                                  .data[index])
+                                                          ? YvanIcons.heart
                                                           : Icons
                                                               .favorite_border,
                                                       color: favoritesShops
-                                                              .contains(
-                                                                  snapshot.data[
-                                                                      index])
+                                                              .contains(snapshot
+                                                                  .data[index])
                                                           ? Colors.red
                                                           : Colors.black,
-                                                      size: size(context)
-                                                              .height /
-                                                          50,
+                                                      size:
+                                                          size(context).height /
+                                                              50,
                                                     )),
                                               )
                                             ],
