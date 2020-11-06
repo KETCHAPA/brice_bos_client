@@ -103,6 +103,8 @@ Future<bool> logout() async {
         headers: {HttpHeaders.authorizationHeader: 'Bearer $token'});
     if (response.statusCode == 200) {
       result = true;
+      globals.isLoggedIn = false;
+      globals.logOut();
       globals.token = '';
     } else {
       print(response.statusCode);

@@ -104,17 +104,17 @@ class _AllProductPageState extends State<AllProductPage> {
       child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.white,
-            leading: IconButton(
-              icon: Icon(
-                YvanIcons.left_arrow_1,
-                color: Colors.black,
-              ),
-              onPressed: widget.category == null &&
-                      widget.shop == null &&
-                      widget.products == null
-                  ? () {}
-                  : () => Navigator.pop(context),
-            ),
+            leading: widget.category == null &&
+                    widget.shop == null &&
+                    widget.products == null
+                ? null
+                : IconButton(
+                    icon: Icon(
+                      YvanIcons.left_arrow_1,
+                      color: Colors.black,
+                    ),
+                    onPressed: () => Navigator.pop(context),
+                  ),
             primary: false,
             automaticallyImplyLeading: false,
             title: Text(title,
@@ -239,26 +239,10 @@ class _ViewState extends State<View> {
                     ? size(context).height / 195.0
                     : index % 3 == 0
                         ? size(context).height / 220.0
-                        : size(context).height / 250.0),
+                        : size(context).height / 240.0),
             mainAxisSpacing: size(context).height / 22.0,
             crossAxisSpacing: size(context).width / 30.0,
             itemBuilder: (BuildContext context, int index) => GestureDetector(
-                  onDoubleTap: () {
-                    setState(() {
-                      if (favoriteDescriptions
-                              .contains(data[index].description) &&
-                          favoriteNames.contains(data[index].name)) {
-                        favorites.remove(data[index]);
-                        favoriteDescriptions.remove(data[index].description);
-                        favoriteNames.remove(data[index].name);
-                      } else {
-                        favorites.add(data[index]);
-                        favoriteNames.add(data[index].name);
-                        favoriteDescriptions.add(data[index].description);
-                      }
-                      storeFavorite(favorites);
-                    });
-                  },
                   onTap: () {
                     if (!recents.contains(widget.products[index])) {
                       recents.add(widget.products[index]);
@@ -338,32 +322,56 @@ class _ViewState extends State<View> {
                               Positioned(
                                 bottom: 0,
                                 right: 0,
-                                child: Container(
-                                    margin: EdgeInsets.all(
-                                        size(context).height / 100),
-                                    padding: EdgeInsets.all(
-                                        size(context).height / 100),
-                                    decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Colors.white),
-                                    child: Icon(
-                                      favoriteDescriptions.contains(
-                                                  data[index].description) &&
-                                              favoriteNames
-                                                  .contains(data[index].name)
-                                          ? YvanIcons.heart
-                                          : Icons.favorite_border,
-                                      color: favoriteDescriptions.contains(
-                                                  data[index].description) &&
-                                              favoriteNames
-                                                  .contains(data[index].name)
-                                          ? Colors.red.withOpacity(.9)
-                                          : Colors.black54,
-                                      size: size(context).height / 50,
-                                    )),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      if (favoriteDescriptions.contains(
+                                              data[index].description) &&
+                                          favoriteNames
+                                              .contains(data[index].name)) {
+                                        favorites.remove(data[index]);
+                                        favoriteDescriptions
+                                            .remove(data[index].description);
+                                        favoriteNames.remove(data[index].name);
+                                      } else {
+                                        favorites.add(data[index]);
+                                        favoriteNames.add(data[index].name);
+                                        favoriteDescriptions
+                                            .add(data[index].description);
+                                      }
+                                      storeFavorite(favorites);
+                                    });
+                                  },
+                                  child: Container(
+                                      margin: EdgeInsets.all(
+                                          size(context).height / 100),
+                                      padding: EdgeInsets.all(
+                                          size(context).height / 100),
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.white),
+                                      child: Icon(
+                                        favoriteDescriptions.contains(
+                                                    data[index].description) &&
+                                                favoriteNames
+                                                    .contains(data[index].name)
+                                            ? Icons.favorite
+                                            : Icons.favorite_border,
+                                        color: favoriteDescriptions.contains(
+                                                    data[index].description) &&
+                                                favoriteNames
+                                                    .contains(data[index].name)
+                                            ? Colors.red.withOpacity(.9)
+                                            : Colors.black54,
+                                        size: size(context).height / 50,
+                                      )),
+                                ),
                               )
                             ],
                           )),
+                      SizedBox(
+                        height: size(context).height / 200.0,
+                      ),
                       Container(
                         width: size(context).width / 2,
                         child: Text(
@@ -374,12 +382,18 @@ class _ViewState extends State<View> {
                               fontSize: size(context).height / 50),
                         ),
                       ),
+                      SizedBox(
+                        height: size(context).height / 200.0,
+                      ),
                       Row(
                         children: [
                           Container(
                             width: size(context).width / 3.3,
                             child: Text(
-                              '${data[index].oldPrice} XAF',
+                              data[index].newPrice == null ||
+                                      data[index].newPrice == 0
+                                  ? '${data[index].oldPrice} XAF'
+                                  : '${data[index].newPrice} XAF',
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                   color: Colors.black,
@@ -393,7 +407,7 @@ class _ViewState extends State<View> {
                               : Container(
                                   width: size(context).width / 7,
                                   child: Text(
-                                    '${data[index].newPrice} XAF',
+                                    data[index].oldPrice.toString(),
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                         color: Colors.red,
@@ -404,6 +418,7 @@ class _ViewState extends State<View> {
                                 )
                         ],
                       ),
+                      Spacer(),
                     ],
                   ),
                 ),

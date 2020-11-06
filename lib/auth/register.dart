@@ -70,10 +70,50 @@ class _RegisterPageState extends State<RegisterPage> {
     FocusScope.of(context).requestFocus(nextNode);
   }
 
+  @override
+  void initState() {
+    super.initState();
+    progress = loadingWidget(context);
+  }
+
   setPage(int page) {
-    setState(() {
-      _currentPage = page;
-    });
+    if (page == 1) {
+      if (_loginController.text.isNotEmpty &&
+          _passwordController.text.isNotEmpty &&
+          _cPasswordController.text.isNotEmpty) {
+        setPage(1);
+      } else {
+        sweetalert(
+            context: context,
+            withConfirmation: false,
+            subtitle: 'Remplissez tous les champs',
+            type: SweetAlertStyle.confirm);
+      }
+    } else if (page == 2) {
+      if (_nameController.text.isNotEmpty &&
+          _emailController.text.isNotEmpty &&
+          _phoneController.text.isNotEmpty) {
+        setPage(2);
+      } else {
+        sweetalert(
+            context: context,
+            withConfirmation: false,
+            subtitle: 'Remplissez tous les champs',
+            type: SweetAlertStyle.confirm);
+      }
+    } else if (page == 3) {
+      if (_country != null &&
+          _town != null &&
+          _addressController.text.isNotEmpty) {
+        setPage(3);
+      } else {
+        sweetalert(
+            context: context,
+            withConfirmation: false,
+            subtitle: 'Remplissez tous les champs',
+            type: SweetAlertStyle.confirm);
+      }
+    }
   }
 
   String name = '', base64Image = '';
@@ -104,7 +144,6 @@ class _RegisterPageState extends State<RegisterPage> {
         params['photo'] = name;
         params['photo_encode'] = base64Image;
       }
-      progress = loadingWidget(context);
       progress.show();
 
       await register(params).then((success) {
@@ -138,8 +177,7 @@ class _RegisterPageState extends State<RegisterPage> {
         ? Column(
             children: [
               TextFormField(
-                style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                style: TextStyle(color: Colors.black),
                 textInputAction: TextInputAction.next,
                 onFieldSubmitted: (val) {
                   _switchNode(context, _loginNode, _passwordNode);
@@ -152,7 +190,9 @@ class _RegisterPageState extends State<RegisterPage> {
                       color: Colors.black,
                       size: size(context).height / 40.0,
                     ),
-                    focusColor: Colors.black,
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black)),
+                    focusColor: Colors.orange,
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black)),
                     labelStyle: TextStyle(color: Colors.black38),
@@ -162,8 +202,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: size(context).height / 50.0,
               ),
               TextFormField(
-                style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                style: TextStyle(color: Colors.black),
                 textInputAction: TextInputAction.next,
                 controller: _passwordController,
                 focusNode: _passwordNode,
@@ -177,7 +216,9 @@ class _RegisterPageState extends State<RegisterPage> {
                       color: Colors.black,
                       size: size(context).height / 40.0,
                     ),
-                    focusColor: Colors.black,
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black)),
+                    focusColor: Colors.orange,
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black)),
                     labelStyle: TextStyle(color: Colors.black38),
@@ -205,8 +246,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         type: SweetAlertStyle.confirm);
                   }
                 },
-                style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                style: TextStyle(color: Colors.black),
                 decoration: InputDecoration(
                     suffixIcon: Icon(
                       YvanIcons.key,
@@ -214,7 +254,9 @@ class _RegisterPageState extends State<RegisterPage> {
                       size: size(context).height / 40.0,
                     ),
                     labelStyle: TextStyle(color: Colors.black38),
-                    focusColor: Colors.black,
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black)),
+                    focusColor: Colors.orange,
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black)),
                     labelText: 'Confirmation'),
@@ -225,8 +267,7 @@ class _RegisterPageState extends State<RegisterPage> {
             ? Column(
                 children: [
                   TextFormField(
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
+                    style: TextStyle(color: Colors.black),
                     controller: _nameController,
                     textInputAction: TextInputAction.next,
                     focusNode: _nameNode,
@@ -240,7 +281,9 @@ class _RegisterPageState extends State<RegisterPage> {
                           color: Colors.black,
                           size: size(context).height / 40.0,
                         ),
-                        focusColor: Colors.black,
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black)),
+                        focusColor: Colors.orange,
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.black)),
                         labelStyle: TextStyle(color: Colors.black38),
@@ -250,8 +293,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     height: size(context).height / 50.0,
                   ),
                   TextFormField(
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
+                    style: TextStyle(color: Colors.black),
                     controller: _emailController,
                     textInputAction: TextInputAction.next,
                     focusNode: _emailNode,
@@ -265,7 +307,9 @@ class _RegisterPageState extends State<RegisterPage> {
                           color: Colors.black,
                           size: size(context).height / 40.0,
                         ),
-                        focusColor: Colors.black,
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black)),
+                        focusColor: Colors.orange,
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.black)),
                         labelStyle: TextStyle(color: Colors.black38),
@@ -292,8 +336,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             type: SweetAlertStyle.confirm);
                       }
                     },
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
+                    style: TextStyle(color: Colors.black),
                     decoration: InputDecoration(
                         suffixIcon: Icon(
                           YvanIcons.phone_line,
@@ -301,7 +344,9 @@ class _RegisterPageState extends State<RegisterPage> {
                           size: size(context).height / 40.0,
                         ),
                         labelStyle: TextStyle(color: Colors.black38),
-                        focusColor: Colors.black,
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black)),
+                        focusColor: Colors.orange,
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.black)),
                         labelText: 'Telephone'),
@@ -378,9 +423,12 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: Container(
                             width: MediaQuery.of(context).size.width * .9,
                             height: 50.0,
+                            padding: EdgeInsets.symmetric(
+                                horizontal: size(context).width / 30.0),
                             decoration: BoxDecoration(
-                              border: Border(
-                                  bottom: BorderSide(color: Colors.black)),
+                              borderRadius: BorderRadius.circular(
+                                  size(context).height / 150.0),
+                              border: Border.all(color: Colors.black),
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -470,9 +518,12 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: Container(
                             width: MediaQuery.of(context).size.width * .9,
                             height: 50.0,
+                            padding: EdgeInsets.symmetric(
+                                horizontal: size(context).width / 30.0),
                             decoration: BoxDecoration(
-                              border: Border(
-                                  bottom: BorderSide(color: Colors.black)),
+                              borderRadius: BorderRadius.circular(
+                                  size(context).height / 150.0),
+                              border: Border.all(color: Colors.black),
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -484,7 +535,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 Icon(
-                                  Icons.arrow_drop_down,
+                                  YvanIcons.arrow_drop_down_line,
                                   color: Colors.black.withOpacity(.8),
                                 ),
                               ],
@@ -494,8 +545,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         height: size(context).height / 50.0,
                       ),
                       TextFormField(
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
+                        style: TextStyle(color: Colors.black),
                         controller: _addressController,
                         textInputAction: TextInputAction.done,
                         focusNode: _addressNode,
@@ -520,6 +570,8 @@ class _RegisterPageState extends State<RegisterPage> {
                               color: Colors.black,
                               size: size(context).height / 40.0,
                             ),
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black)),
                             focusColor: Colors.black,
                             focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black)),
@@ -531,8 +583,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 : Column(
                     children: [
                       TextFormField(
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
+                        style: TextStyle(color: Colors.black),
                         controller: _streetController,
                         focusNode: _streetNode,
                         textInputAction: TextInputAction.done,
@@ -546,6 +597,8 @@ class _RegisterPageState extends State<RegisterPage> {
                               color: Colors.black,
                               size: size(context).height / 40.0,
                             ),
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black)),
                             focusColor: Colors.black,
                             focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black)),
@@ -566,9 +619,12 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: Container(
                             width: MediaQuery.of(context).size.width * .9,
                             height: 50.0,
+                            padding: EdgeInsets.symmetric(
+                                horizontal: size(context).width / 30.0),
                             decoration: BoxDecoration(
-                              border: Border(
-                                  bottom: BorderSide(color: Colors.black)),
+                              borderRadius: BorderRadius.circular(
+                                  size(context).height / 150.0),
+                              border: Border.all(color: Colors.black),
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -611,8 +667,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                         child: FutureBuilder(
                                             future: file,
                                             builder: (BuildContext context,
-                                                AsyncSnapshot<File>
-                                                    snapshot) {
+                                                AsyncSnapshot<File> snapshot) {
                                               if (snapshot.connectionState ==
                                                       ConnectionState.done &&
                                                   null != snapshot.data) {
@@ -626,8 +681,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                                     if (snapshot.connectionState ==
                                                             ConnectionState
                                                                 .done &&
-                                                        null !=
-                                                            snapshot.data) {
+                                                        null != snapshot.data) {
                                                       name =
                                                           '${snapshot.data.path.split('/').last}';
                                                       base64Image =
@@ -723,7 +777,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   padding: EdgeInsets.symmetric(
                       horizontal: size(context).width / 28.0,
                       vertical: size(context).width / 28.0),
-                  height: size(context).height / 1.6,
+                  height: size(context).height / 1.55,
                   color: Colors.white,
                   child: Column(
                     children: [
@@ -740,9 +794,13 @@ class _RegisterPageState extends State<RegisterPage> {
                           color: Colors.black26,
                         ),
                       ),
-                      Spacer(),
+                      Spacer(
+                        flex: 2,
+                      ),
                       pagination(_currentPage),
-                      Spacer(),
+                      Spacer(
+                        flex: 2,
+                      ),
                       RaisedButton(
                         elevation: 0.0,
                         color: Colors.orange,
@@ -752,44 +810,49 @@ class _RegisterPageState extends State<RegisterPage> {
                         onPressed: () => _currentPage < 3
                             ? setPage(++_currentPage)
                             : _register(context),
-                        child: Padding(
+                        child: Container(
+                          alignment: Alignment.center,
                           padding: EdgeInsets.symmetric(
-                              horizontal: _currentPage > 2
-                                  ? size(context).height / 12.0
-                                  : size(context).height / 10.5,
-                              vertical: size(context).width / 40.0),
+                              vertical: size(context).width / 30.0),
                           child: Text(
-                            _currentPage > 2 ? 'Inscription' : 'Suivant',
+                            _currentPage > 2
+                                ? 'Inscription'
+                                : 'Etape ${_currentPage + 1} / 4',
                             style: TextStyle(color: Colors.black),
                           ),
                         ),
                       ),
                       RaisedButton(
                         elevation: 0.0,
-                        color:
-                            _currentPage == 0 ? Colors.black54 : Colors.black,
+                        color: Colors.black,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                                 size(context).height / 10.0)),
-                        onPressed: () =>
-                            _currentPage == 0 ? null : setPage(--_currentPage),
-                        child: Padding(
+                        onPressed: () => _currentPage == 0
+                            ? Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => widget.redirection))
+                            : setPage(--_currentPage),
+                        child: Container(
+                          alignment: Alignment.center,
                           padding: EdgeInsets.symmetric(
-                              horizontal: size(context).height / 10.0,
-                              vertical: size(context).width / 40.0),
+                              vertical: size(context).width / 30.0),
                           child: Text(
                             'Retour',
                             style: TextStyle(
-                              color: _currentPage == 0
-                                  ? Colors.white54
-                                  : Colors.white,
+                              color: Colors.white,
                             ),
                           ),
                         ),
                       ),
-                      Spacer(),
+                      Spacer(
+                        flex: 2,
+                      ),
                       Text('Ou inscrivez-vous via les reseaux'),
-                      Spacer(),
+                      Spacer(
+                        flex: 2,
+                      ),
                       Container(
                         margin: EdgeInsets.symmetric(
                           horizontal: size(context).height / 10.0,
@@ -812,7 +875,8 @@ class _RegisterPageState extends State<RegisterPage> {
                             )
                           ],
                         ),
-                      )
+                      ),
+                      Spacer()
                     ],
                   )),
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:new_bos_app/account/account.dart';
 import 'package:new_bos_app/common/global.dart';
 import 'package:new_bos_app/home/home.dart';
@@ -28,8 +29,7 @@ class _RouterPageState extends State<RouterPage> {
   }
 
   Future<bool> _onWillPop() async {
-    bool returnValue;
-    await showDialog(
+    return showDialog(
         context: context,
         builder: (context) {
           return AlertDialog(
@@ -38,27 +38,18 @@ class _RouterPageState extends State<RouterPage> {
                     BorderRadius.circular(size(context).height / 100)),
             actions: <Widget>[
               FlatButton(
-                onPressed: () {
-                  setState(() {
-                    returnValue = false;
-                  });
-                },
-                child: Text('Annuler', style: TextStyle(color: Colors.pink)),
+                onPressed: () async => SystemNavigator.pop(),
+                child: Text('Continuer', style: TextStyle(color: Colors.pink)),
               ),
               FlatButton(
-                onPressed: () {
-                  setState(() {
-                    returnValue = true;
-                  });
-                },
-                child: Text('Continuer', style: TextStyle(color: Colors.pink)),
+                onPressed: () async => Navigator.pop(context),
+                child: Text('Annuler', style: TextStyle(color: Colors.pink)),
               ),
             ],
             title: Text('Sortie'),
             content: Text('Vous allez quitter l\'application'),
           );
         });
-    return returnValue;
   }
 
   List<Widget> pages = [
@@ -94,8 +85,7 @@ class _RouterPageState extends State<RouterPage> {
             BottomNavigationBarItem(
                 icon: Icon(YvanIcons.bag), title: Text('Panier')),
             BottomNavigationBarItem(
-                icon: Icon(YvanIcons.user_6_line),
-                title: Text('Compte'))
+                icon: Icon(YvanIcons.user_6_line), title: Text('Compte'))
           ]),
       body: WillPopScope(
         onWillPop: _onWillPop,

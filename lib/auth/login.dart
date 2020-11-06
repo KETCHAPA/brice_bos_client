@@ -119,8 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       Spacer(),
                       TextFormField(
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
+                        style: TextStyle(color: Colors.black),
                         controller: _loginController,
                         focusNode: _loginNode,
                         textInputAction: TextInputAction.next,
@@ -136,7 +135,9 @@ class _LoginPageState extends State<LoginPage> {
                               color: Colors.black,
                               size: size(context).height / 40.0,
                             ),
-                            focusColor: Colors.black,
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black)),
+                            focusColor: Colors.orange,
                             focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black)),
                             labelStyle: TextStyle(color: Colors.black38),
@@ -147,8 +148,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       TextFormField(
                         obscureText: _obscureText,
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
+                        style: TextStyle(color: Colors.black),
                         controller: _passwordController,
                         focusNode: _passwordNode,
                         onFieldSubmitted: (value) {
@@ -167,17 +167,23 @@ class _LoginPageState extends State<LoginPage> {
                                 size: size(context).height / 40.0,
                               ),
                             ),
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black)),
                             labelStyle: TextStyle(color: Colors.black38),
                             focusColor: Colors.black,
                             focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black)),
                             labelText: 'Mot de passe'),
                       ),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: Text(
-                          'Mot de passe oublie ?',
-                          style: TextStyle(color: Colors.black26),
+                      Padding(
+                        padding:
+                            EdgeInsets.only(top: size(context).height / 100.0),
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: Text(
+                            'Mot de passe oublie ?',
+                            style: TextStyle(color: Colors.black26),
+                          ),
                         ),
                       ),
                       Spacer(),
@@ -188,10 +194,10 @@ class _LoginPageState extends State<LoginPage> {
                             borderRadius: BorderRadius.circular(
                                 size(context).height / 10.0)),
                         onPressed: () => submit(context, progress),
-                        child: Padding(
+                        child: Container(
                           padding: EdgeInsets.symmetric(
-                              horizontal: size(context).height / 10.0,
-                              vertical: size(context).width / 40.0),
+                              vertical: size(context).width / 30.0),
+                          alignment: Alignment.center,
                           child: Text(
                             'Connexion',
                             style: TextStyle(color: Colors.black),
@@ -223,7 +229,8 @@ class _LoginPageState extends State<LoginPage> {
                             )
                           ],
                         ),
-                      )
+                      ),
+                      Spacer()
                     ],
                   )),
             ),

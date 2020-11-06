@@ -118,7 +118,7 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () {},
                   icon: Icon(
                     YvanIcons.left_arrow_1,
-                    color: Colors.black,
+                    color: Colors.transparent,
                   ),
                 ),
                 flexibleSpace: FutureBuilder(
@@ -293,7 +293,7 @@ class _HomePageState extends State<HomePage> {
                 primary: false,
                 actions: [
                   IconButton(
-                    onPressed: () => _searchRedirection,
+                    onPressed: _searchRedirection,
                     icon: Icon(
                       YvanIcons.loupe,
                       size: size(context).height / 40.0,
@@ -304,6 +304,7 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () => Navigator.pushNamed(context, 'favorites'),
                     icon: Icon(
                       YvanIcons.add_to_favorite,
+                      size: size(context).height / 40.0,
                       color: Colors.black,
                     ),
                   ),
@@ -663,7 +664,9 @@ class _HomePageState extends State<HomePage> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    AllCategoryPage())),
+                                                    AllProductPage(
+                                                      products: _flashSalesData,
+                                                    ))),
                                         child: Row(
                                           children: [
                                             Counter(),
@@ -930,9 +933,18 @@ class _HomePageState extends State<HomePage> {
                                             fontSize:
                                                 size(context).height / 40.0),
                                       ),
-                                      Icon(
-                                        YvanIcons.arrow_drop_right_line,
-                                        color: Colors.black,
+                                      GestureDetector(
+                                        onTap: () => Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    AllProductPage(
+                                                      products: _dailyDealsData,
+                                                    ))),
+                                        child: Icon(
+                                          YvanIcons.arrow_drop_right_line,
+                                          color: Colors.black,
+                                        ),
                                       )
                                     ],
                                   ),

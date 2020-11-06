@@ -139,8 +139,7 @@ class _UpdateDataState extends State<UpdateData> {
         ? Column(
             children: [
               TextFormField(
-                style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                style: TextStyle(color: Colors.black),
                 textInputAction: TextInputAction.next,
                 onFieldSubmitted: (val) {
                   _switchNode(context, _loginNode, _passwordNode);
@@ -153,7 +152,9 @@ class _UpdateDataState extends State<UpdateData> {
                     color: Colors.black,
                     size: size(context).height / 40.0,
                   ),
-                  focusColor: Colors.black,
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black)),
+                  focusColor: Colors.orange,
                   focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black)),
                   labelStyle: TextStyle(color: Colors.black38),
@@ -165,8 +166,7 @@ class _UpdateDataState extends State<UpdateData> {
                 height: size(context).height / 50.0,
               ),
               TextFormField(
-                style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                style: TextStyle(color: Colors.black),
                 textInputAction: TextInputAction.next,
                 controller: _passwordController,
                 focusNode: _passwordNode,
@@ -180,7 +180,9 @@ class _UpdateDataState extends State<UpdateData> {
                     color: Colors.black,
                     size: size(context).height / 40.0,
                   ),
-                  focusColor: Colors.black,
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black)),
+                  focusColor: Colors.orange,
                   focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black)),
                   labelStyle: TextStyle(color: Colors.black38),
@@ -200,8 +202,7 @@ class _UpdateDataState extends State<UpdateData> {
                   _cPasswordNode.unfocus();
                   setPage(1);
                 },
-                style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                style: TextStyle(color: Colors.black),
                 decoration: InputDecoration(
                   suffixIcon: Icon(
                     YvanIcons.key,
@@ -209,7 +210,9 @@ class _UpdateDataState extends State<UpdateData> {
                     size: size(context).height / 40.0,
                   ),
                   labelStyle: TextStyle(color: Colors.black38),
-                  focusColor: Colors.black,
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black)),
+                  focusColor: Colors.orange,
                   focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black)),
                   labelText: 'Confirmation',
@@ -222,8 +225,7 @@ class _UpdateDataState extends State<UpdateData> {
             ? Column(
                 children: [
                   TextFormField(
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
+                    style: TextStyle(color: Colors.black),
                     controller: _nameController,
                     textInputAction: TextInputAction.next,
                     focusNode: _nameNode,
@@ -237,7 +239,9 @@ class _UpdateDataState extends State<UpdateData> {
                         color: Colors.black,
                         size: size(context).height / 40.0,
                       ),
-                      focusColor: Colors.black,
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black)),
+                      focusColor: Colors.orange,
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.black)),
                       labelStyle: TextStyle(color: Colors.black38),
@@ -249,8 +253,7 @@ class _UpdateDataState extends State<UpdateData> {
                     height: size(context).height / 50.0,
                   ),
                   TextFormField(
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
+                    style: TextStyle(color: Colors.black),
                     controller: _emailController,
                     textInputAction: TextInputAction.next,
                     focusNode: _emailNode,
@@ -264,7 +267,9 @@ class _UpdateDataState extends State<UpdateData> {
                         color: Colors.black,
                         size: size(context).height / 40.0,
                       ),
-                      focusColor: Colors.black,
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black)),
+                      focusColor: Colors.orange,
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.black)),
                       labelStyle: TextStyle(color: Colors.black38),
@@ -283,8 +288,7 @@ class _UpdateDataState extends State<UpdateData> {
                       _phoneNode.unfocus();
                       setPage(2);
                     },
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
+                    style: TextStyle(color: Colors.black),
                     decoration: InputDecoration(
                       suffixIcon: Icon(
                         YvanIcons.phone_line,
@@ -292,7 +296,9 @@ class _UpdateDataState extends State<UpdateData> {
                         size: size(context).height / 40.0,
                       ),
                       labelStyle: TextStyle(color: Colors.black38),
-                      focusColor: Colors.black,
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black)),
+                      focusColor: Colors.orange,
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.black)),
                       labelText: 'Telephone',
@@ -371,9 +377,12 @@ class _UpdateDataState extends State<UpdateData> {
                         child: Container(
                             width: MediaQuery.of(context).size.width * .9,
                             height: 50.0,
+                            padding: EdgeInsets.symmetric(
+                                horizontal: size(context).width / 30.0),
                             decoration: BoxDecoration(
-                              border: Border(
-                                  bottom: BorderSide(color: Colors.black)),
+                              borderRadius: BorderRadius.circular(
+                                  size(context).height / 150.0),
+                              border: Border.all(color: Colors.black),
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -463,9 +472,12 @@ class _UpdateDataState extends State<UpdateData> {
                         child: Container(
                             width: MediaQuery.of(context).size.width * .9,
                             height: 50.0,
+                            padding: EdgeInsets.symmetric(
+                                horizontal: size(context).width / 30.0),
                             decoration: BoxDecoration(
-                              border: Border(
-                                  bottom: BorderSide(color: Colors.black)),
+                              borderRadius: BorderRadius.circular(
+                                  size(context).height / 150.0),
+                              border: Border.all(color: Colors.black),
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -487,8 +499,7 @@ class _UpdateDataState extends State<UpdateData> {
                         height: size(context).height / 50.0,
                       ),
                       TextFormField(
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
+                        style: TextStyle(color: Colors.black),
                         controller: _addressController,
                         textInputAction: TextInputAction.done,
                         focusNode: _addressNode,
@@ -504,7 +515,9 @@ class _UpdateDataState extends State<UpdateData> {
                             color: Colors.black,
                             size: size(context).height / 40.0,
                           ),
-                          focusColor: Colors.black,
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black)),
+                          focusColor: Colors.orange,
                           focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.black)),
                           labelStyle: TextStyle(color: Colors.black38),
@@ -518,8 +531,7 @@ class _UpdateDataState extends State<UpdateData> {
                 : Column(
                     children: [
                       TextFormField(
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
+                        style: TextStyle(color: Colors.black),
                         controller: _streetController,
                         focusNode: _streetNode,
                         textInputAction: TextInputAction.done,
@@ -533,7 +545,9 @@ class _UpdateDataState extends State<UpdateData> {
                             color: Colors.black,
                             size: size(context).height / 40.0,
                           ),
-                          focusColor: Colors.black,
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black)),
+                          focusColor: Colors.orange,
                           focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.black)),
                           labelStyle: TextStyle(color: Colors.black38),
@@ -755,12 +769,10 @@ class _UpdateDataState extends State<UpdateData> {
                         onPressed: () => _currentPage < 3
                             ? setPage(++_currentPage)
                             : _update(context),
-                        child: Padding(
+                        child: Container(
+                          alignment: Alignment.center,
                           padding: EdgeInsets.symmetric(
-                              horizontal: _currentPage > 2
-                                  ? size(context).height / 12.5
-                                  : size(context).height / 10.5,
-                              vertical: size(context).width / 40.0),
+                              vertical: size(context).width / 30.0),
                           child: Text(
                             _currentPage > 2 ? 'Mise a jour' : 'Suivant',
                             style: TextStyle(color: Colors.black),
@@ -776,10 +788,10 @@ class _UpdateDataState extends State<UpdateData> {
                                 size(context).height / 10.0)),
                         onPressed: () =>
                             _currentPage == 0 ? null : setPage(--_currentPage),
-                        child: Padding(
+                        child: Container(
+                          alignment: Alignment.center,
                           padding: EdgeInsets.symmetric(
-                              horizontal: size(context).height / 10.0,
-                              vertical: size(context).width / 40.0),
+                              vertical: size(context).width / 30.0),
                           child: Text(
                             'Retour',
                             style: TextStyle(

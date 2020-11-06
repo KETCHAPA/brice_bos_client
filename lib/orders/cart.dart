@@ -44,13 +44,7 @@ class _CartPageState extends State<CartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          leading: IconButton(
-            onPressed: () {},
-            icon: Icon(
-              YvanIcons.left_arrow_1,
-              color: Colors.black,
-            ),
-          ),
+          automaticallyImplyLeading: false,
           centerTitle: true,
           title: Text(
             'Panier',

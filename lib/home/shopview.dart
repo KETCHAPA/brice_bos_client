@@ -136,7 +136,7 @@ class _ShopViewState extends State<ShopView> {
                                   alignment: Alignment.center,
                                   height: size(context).height / 20.0,
                                   child: Text(
-                                    '10 Produits',
+                                    '${widget.shops[index].nbrOfProducts} Produit(s)',
                                     textAlign: TextAlign.center,
                                     overflow: TextOverflow.fade,
                                     style: TextStyle(
@@ -149,17 +149,39 @@ class _ShopViewState extends State<ShopView> {
                               Positioned(
                                   bottom: 0.0,
                                   right: 0.0,
-                                  child: Container(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal:
-                                            size(context).height / 100.0,
-                                        vertical: size(context).height / 200.0),
-                                    alignment: Alignment.center,
-                                    height: size(context).height / 20.0,
-                                    child: Icon(
-                                      YvanIcons.heart,
-                                      color: Colors.black,
-                                      size: size(context).height / 50.0,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        if (favoritesShops
+                                            .contains(widget.shops[index])) {
+                                          favoritesShops
+                                              .remove(widget.shops[index]);
+                                        } else {
+                                          favoritesShops
+                                              .add(widget.shops[index]);
+                                        }
+                                      });
+                                      storeFavoriteShops(favoritesShops);
+                                    },
+                                    child: Container(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal:
+                                              size(context).height / 100.0,
+                                          vertical:
+                                              size(context).height / 200.0),
+                                      alignment: Alignment.center,
+                                      height: size(context).height / 20.0,
+                                      child: Icon(
+                                        favoritesShops
+                                                .contains(widget.shops[index])
+                                            ? Icons.favorite
+                                            : YvanIcons.heart,
+                                        color: favoritesShops
+                                                .contains(widget.shops[index])
+                                            ? Colors.red
+                                            : Colors.black,
+                                        size: size(context).height / 50.0,
+                                      ),
                                     ),
                                   ))
                             ],

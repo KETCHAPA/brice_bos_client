@@ -109,19 +109,6 @@ class _ShopPageState extends State<ShopPage> {
                                           builder: (context) => AllProductPage(
                                                 shop: snapshot.data[index],
                                               ))),
-                                  onDoubleTap: () {
-                                    setState(() {
-                                      if (favoritesShops
-                                          .contains(snapshot.data[index])) {
-                                        favoritesShops
-                                            .remove(snapshot.data[index]);
-                                      } else {
-                                        favoritesShops
-                                            .add(snapshot.data[index]);
-                                      }
-                                    });
-                                    storeFavoriteShops(favoritesShops);
-                                  },
                                   child: Column(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -153,34 +140,83 @@ class _ShopPageState extends State<ShopPage> {
                                                             Icon(Icons.error),
                                                   )),
                                               Positioned(
+                                                bottom: 0.0,
+                                                left: 0.0,
+                                                child: Container(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal:
+                                                          size(context).height /
+                                                              100.0,
+                                                      vertical:
+                                                          size(context).height /
+                                                              200.0),
+                                                  alignment: Alignment.center,
+                                                  height: size(context).height /
+                                                      20.0,
+                                                  child: Text(
+                                                    '${snapshot.data[index].nbrOfProducts} Produit(s)',
+                                                    textAlign: TextAlign.center,
+                                                    overflow: TextOverflow.fade,
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: Colors.white,
+                                                        fontSize: size(context)
+                                                                .height /
+                                                            60.0),
+                                                  ),
+                                                ),
+                                              ),
+                                              Positioned(
                                                 bottom: 0,
                                                 right: 0,
-                                                child: Container(
-                                                    margin: EdgeInsets.all(
-                                                        size(context).height /
-                                                            100),
-                                                    padding: EdgeInsets.all(
-                                                        size(context).height /
-                                                            100),
-                                                    decoration: BoxDecoration(
-                                                        shape: BoxShape.circle,
-                                                        color: Colors.white),
-                                                    child: Icon(
-                                                      favoritesShops.contains(
-                                                              snapshot
-                                                                  .data[index])
-                                                          ? YvanIcons.heart
-                                                          : Icons
-                                                              .favorite_border,
-                                                      color: favoritesShops
-                                                              .contains(snapshot
-                                                                  .data[index])
-                                                          ? Colors.red
-                                                          : Colors.black,
-                                                      size:
+                                                child: GestureDetector(
+                                                  onTap: () {
+                                                    setState(() {
+                                                      if (favoritesShops
+                                                          .contains(snapshot
+                                                              .data[index])) {
+                                                        favoritesShops.remove(
+                                                            snapshot
+                                                                .data[index]);
+                                                      } else {
+                                                        favoritesShops.add(
+                                                            snapshot
+                                                                .data[index]);
+                                                      }
+                                                    });
+                                                    storeFavoriteShops(
+                                                        favoritesShops);
+                                                  },
+                                                  child: Container(
+                                                      margin: EdgeInsets.all(
                                                           size(context).height /
-                                                              50,
-                                                    )),
+                                                              100),
+                                                      padding: EdgeInsets.all(
+                                                          size(context).height /
+                                                              100),
+                                                      decoration: BoxDecoration(
+                                                          shape:
+                                                              BoxShape.circle,
+                                                          color: Colors.white),
+                                                      child: Icon(
+                                                        favoritesShops.contains(
+                                                                snapshot.data[
+                                                                    index])
+                                                            ? Icons.favorite
+                                                            : Icons
+                                                                .favorite_border,
+                                                        color: favoritesShops
+                                                                .contains(
+                                                                    snapshot.data[
+                                                                        index])
+                                                            ? Colors.red
+                                                            : Colors.black,
+                                                        size: size(context)
+                                                                .height /
+                                                            50,
+                                                      )),
+                                                ),
                                               )
                                             ],
                                           )),

@@ -63,74 +63,52 @@ class _ProductsByIdPageState extends State<ProductsByIdPage> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
-          actions: <Widget>[
-            Container(
-              width: 40.0,
-              child: Stack(
-                children: <Widget>[
-                  IconButton(
-                    icon: Icon(YvanIcons.bag),
-                    color: Colors.black.withOpacity(.7),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/carts');
-                    },
-                  ),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: Container(
-                      width: 20.0,
-                      height: 20.0,
-                      decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                              begin: Alignment.topRight,
-                              end: Alignment.bottomLeft,
-                              colors: [Colors.red, Colors.deepOrangeAccent]),
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(20.0))),
-                      child: Center(
-                          child: Text('$length',
-                              style: TextStyle(
-                                color: Colors.white,
-                              ))),
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
           leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icon(Icons.arrow_back, color: Colors.black),
+            icon: Icon(
+              YvanIcons.left_arrow_1,
+              color: Colors.black,
+            ),
+            onPressed: () => Navigator.pop(context),
           ),
-          title: Stack(
-            children: <Widget>[
-              Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                    color: Colors.grey.withOpacity(.3)),
-                child: TextFormField(
-                  decoration: new InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.search,
-                        color: Colors.grey,
-                      ),
-                      fillColor: Colors.grey,
-                      hintText: 'Recherche...',
-                      border: InputBorder.none),
-                ),
+          primary: false,
+          automaticallyImplyLeading: false,
+          title: Text('Produits',
+              style: TextStyle(
+                  fontSize: size(context).height / 30.0, color: Colors.black)),
+          actions: [
+            IconButton(
+              onPressed: _searchRedirection,
+              icon: Icon(
+                YvanIcons.loupe,
+                color: Colors.black,
+                size: size(context).height / 40.0,
               ),
-              InkWell(
-                onTap: _searchRedirection,
-                child: Container(
-                  color: Colors.transparent,
-                  width: MediaQuery.of(context).size.width,
-                  height: 50.0,
+            ),
+            IconButton(
+                icon: Stack(
+                  children: [
+                    Icon(
+                      YvanIcons.bag,
+                      color: Colors.black,
+                    ),
+                    Positioned(
+                      right: 0.0,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle, color: Colors.red),
+                        padding: EdgeInsets.all(size(context).height / 200),
+                        child: Text(
+                          length.toString(),
+                          style: TextStyle(
+                              fontSize: size(context).height / 70.0,
+                              color: Colors.white),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
-              )
-            ],
-          ),
+                onPressed: () => Navigator.pushNamed(context, 'cart'))
+          ],
         ),
         body: RefreshIndicator(
           onRefresh: () async {
@@ -155,97 +133,17 @@ class _ProductsByIdPageState extends State<ProductsByIdPage> {
                 for (var item in snapshot.data['products']) {
                   products.add(new Product.fromJson(item));
                 }
-                return ListView(
-                  children: <Widget>[
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        SizedBox(
-                          height: 10.0,
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: 20.0,
-                          child: Row(
-                            children: <Widget>[
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    left: 10.0,
-                                    top: 3.0,
-                                    bottom: 3.0,
-                                    right: 2.0),
-                                child: Text(
-                                  'Triage par defaut',
-                                  style: TextStyle(fontSize: 10.0),
-                                ),
-                              ),
-                              Column(
-                                children: <Widget>[
-                                  Spacer(),
-                                  Icon(
-                                    Icons.keyboard_arrow_down,
-                                    size: 10.0,
-                                  ),
-                                  Spacer(),
-                                ],
-                              ),
-                              Spacer(),
-                              Column(
-                                children: <Widget>[
-                                  Container(
-                                    width: 13.0,
-                                    height: 12.0,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(),
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(60.0)),
-                                    ),
-                                    child: ClipOval(
-                                      child: Image.network(
-                                          imagePath(shop.photo ??
-                                              'shops/clothes_shop.jpg'),
-                                          fit: BoxFit.cover),
-                                    ),
-                                  ),
-                                  Text(shop.name,
-                                      style: TextStyle(fontSize: 6.0))
-                                ],
-                              ),
-                              Spacer(),
-                              Icon(
-                                Icons.tune,
-                                size: 18.0,
-                                color: Colors.deepOrange,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    right: 10.0, left: 3.0),
-                                child: Text(
-                                  'Filtre',
-                                  style: TextStyle(
-                                      color: Colors.deepOrange, fontSize: 13.0),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10.0,
-                        ),
-                        Padding(
-                            padding: const EdgeInsets.only(top: 5.0),
-                            child: products == null || products.isEmpty
-                                ? Center(child: Text('Aucun produit'))
-                                : View(
-                                    products: products,
-                                    bottom: bottom,
-                                  ))
-                      ],
-                    ),
-                  ],
-                );
+                return products == null || products.isEmpty
+                    ? Center(child: Text('Aucun produit'))
+                    : View(
+                        products: products,
+                        bottom: bottom,
+                      );
               }
-              return Center(child: CircularProgressIndicator());
+
+              return Center(
+                child: loader(),
+              );
             },
           ),
         ));

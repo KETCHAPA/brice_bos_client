@@ -47,25 +47,17 @@ class _AccountPageState extends State<AccountPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Icon(
-                            YvanIcons.left_arrow_1,
-                            color: Colors.black,
-                          ),
-                          Spacer(),
                           GestureDetector(
                             onTap: () => Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => SettingsPage())),
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: size(context).height / 50.0),
-                              child: Icon(
-                                YvanIcons.settings_line,
-                                color: Colors.black,
-                              ),
+                            child: Icon(
+                              YvanIcons.settings_line,
+                              color: Colors.black,
                             ),
                           ),
+                          Spacer(),
                           GestureDetector(
                             onTap: () => Navigator.pushNamed(context, 'cart'),
                             child: Stack(
@@ -153,7 +145,7 @@ class _AccountPageState extends State<AccountPage> {
                                   builder: (context, userSnapshot) {
                                     if (userSnapshot.hasError) {
                                       return Center(
-                                        child: Text('Rafraichir la page'),
+                                        child: Text(''),
                                       );
                                     }
                                     if (userSnapshot.hasData) {
@@ -226,7 +218,7 @@ class _AccountPageState extends State<AccountPage> {
                                                     style: TextStyle(
                                                         fontSize: size(context)
                                                                 .height /
-                                                            32.0,
+                                                            35.0,
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   )),
@@ -282,7 +274,7 @@ class _AccountPageState extends State<AccountPage> {
                             style: TextStyle(
                                 color:
                                     !isLoggedIn ? Colors.black45 : Colors.black,
-                                fontSize: size(context).height / 35.0,
+                                fontSize: size(context).height / 40.0,
                                 fontWeight: !isLoggedIn
                                     ? FontWeight.normal
                                     : FontWeight.bold),
@@ -310,7 +302,7 @@ class _AccountPageState extends State<AccountPage> {
                           )
                         ],
                       ),
-                      SizedBox(height: size(context).height / 100.0),
+                      SizedBox(height: size(context).height / 70.0),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -334,11 +326,12 @@ class _AccountPageState extends State<AccountPage> {
                                       : Colors.black,
                                   size: size(context).height / 30.0,
                                 ),
+                                SizedBox(height: size(context).height / 100.0),
                                 Text(
                                   'En Attente',
                                   style: TextStyle(
                                       color: Colors.black45,
-                                      fontSize: size(context).height / 50.0),
+                                      fontSize: size(context).height / 55.0),
                                 ),
                               ],
                             ),
@@ -363,11 +356,12 @@ class _AccountPageState extends State<AccountPage> {
                                       : Colors.black,
                                   size: size(context).height / 30.0,
                                 ),
+                                SizedBox(height: size(context).height / 100.0),
                                 Text(
                                   'En Route',
                                   style: TextStyle(
                                       color: Colors.black45,
-                                      fontSize: size(context).height / 50.0),
+                                      fontSize: size(context).height / 55.0),
                                 ),
                               ],
                             ),
@@ -393,11 +387,12 @@ class _AccountPageState extends State<AccountPage> {
                                       : Colors.black,
                                   size: size(context).height / 30.0,
                                 ),
+                                SizedBox(height: size(context).height / 100.0),
                                 Text(
                                   'Retour & SAV',
                                   style: TextStyle(
                                       color: Colors.black45,
-                                      fontSize: size(context).height / 50.0),
+                                      fontSize: size(context).height / 55.0),
                                 ),
                               ],
                             ),
@@ -463,7 +458,7 @@ class _AccountPageState extends State<AccountPage> {
                                                           FontWeight.bold,
                                                       fontSize:
                                                           size(context).height /
-                                                              38.0),
+                                                              42.0),
                                                 ),
                                               ),
                                             ),
@@ -506,7 +501,7 @@ class _AccountPageState extends State<AccountPage> {
                                                         ? Colors.black45
                                                         : Colors.black,
                                                     size: size(context).height /
-                                                        31,
+                                                        35,
                                                   )),
                                             ),
                                           ),
@@ -540,11 +535,11 @@ class _AccountPageState extends State<AccountPage> {
                                 YvanIcons.brand,
                                 color:
                                     !isLoggedIn ? Colors.black45 : Colors.black,
-                                size: size(context).height / 30.0,
+                                size: size(context).height / 35.0,
                               ),
                               title: Text('Mes coupons',
                                   style: TextStyle(
-                                      fontSize: size(context).height / 40.0,
+                                      fontSize: size(context).height / 45.0,
                                       fontWeight: !isLoggedIn
                                           ? FontWeight.normal
                                           : FontWeight.bold,
@@ -560,7 +555,7 @@ class _AccountPageState extends State<AccountPage> {
                                               style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize:
-                                                    size(context).height / 50.0,
+                                                    size(context).height / 60.0,
                                               ));
                                         }
                                         return Text('Recuperation...',
@@ -594,11 +589,11 @@ class _AccountPageState extends State<AccountPage> {
                                 YvanIcons.add_to_favorite,
                                 color:
                                     !isLoggedIn ? Colors.black45 : Colors.black,
-                                size: size(context).height / 30.0,
+                                size: size(context).height / 35.0,
                               ),
                               title: Text('Boutiques favorisees',
                                   style: TextStyle(
-                                      fontSize: size(context).height / 40.0,
+                                      fontSize: size(context).height / 45.0,
                                       fontWeight: !isLoggedIn
                                           ? FontWeight.normal
                                           : FontWeight.bold,
@@ -623,11 +618,11 @@ class _AccountPageState extends State<AccountPage> {
                               leading: Icon(
                                 YvanIcons.refresh_line,
                                 color: Colors.black,
-                                size: size(context).height / 30.0,
+                                size: size(context).height / 35.0,
                               ),
                               title: Text('Vu Recemment',
                                   style: TextStyle(
-                                      fontSize: size(context).height / 40.0,
+                                      fontSize: size(context).height / 45.0,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.black)),
                             ),
@@ -645,11 +640,11 @@ class _AccountPageState extends State<AccountPage> {
                               leading: Icon(
                                 YvanIcons.heart,
                                 color: Colors.black,
-                                size: size(context).height / 30.0,
+                                size: size(context).height / 35.0,
                               ),
                               title: Text('Liste de souhaits',
                                   style: TextStyle(
-                                      fontSize: size(context).height / 40.0,
+                                      fontSize: size(context).height / 45.0,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.black)),
                             ),
@@ -658,15 +653,16 @@ class _AccountPageState extends State<AccountPage> {
                             thickness: 2.0,
                           ),
                           GestureDetector(
-                            onTap: () => launchPhoneCall(phone: '699177985'),
+                            onTap: () =>
+                                launchPhoneCall(phone: '+237699177985'),
                             child: ListTile(
                               contentPadding: EdgeInsets.zero,
                               leading: Icon(Icons.help,
-                                  size: size(context).height / 30.0,
+                                  size: size(context).height / 35.0,
                                   color: Colors.black),
                               title: Text('Services Clientele',
                                   style: TextStyle(
-                                      fontSize: size(context).height / 40.0,
+                                      fontSize: size(context).height / 45.0,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.black)),
                             ),
@@ -675,17 +671,17 @@ class _AccountPageState extends State<AccountPage> {
                             onTap: () => launchWhatsApp(
                                 phone: '',
                                 message:
-                                    'Decouvre Buy, On Send la nouvelle application de vente en ligne de particulier a particulier'),
+                                    'Decouvre Buy, On Send la nouvelle application de vente en ligne de particulier a particulier. play.google.com/store/apps/details?id=b2b2c.ecommerce.bos_client_app'),
                             child: ListTile(
                               contentPadding: EdgeInsets.zero,
                               leading: Icon(
                                 YvanIcons.send_plane_fill,
                                 color: Colors.black,
-                                size: size(context).height / 30.0,
+                                size: size(context).height / 35.0,
                               ),
                               title: Text('Inviter un(e) ami(e)',
                                   style: TextStyle(
-                                      fontSize: size(context).height / 40.0,
+                                      fontSize: size(context).height / 45.0,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.black)),
                             ),

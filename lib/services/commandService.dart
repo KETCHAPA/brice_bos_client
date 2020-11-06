@@ -110,9 +110,10 @@ Future fetchOnRoadCommands(String code) async {
         return data['data'];
       }
     }
-    throw Exception('Impossible de recuperer les commandes en route');
+    throw Exception(
+        'Impossible de recuperer les commandes en route ${response.statusCode}');
   } catch (e) {
-    throw Exception('Impossible de recuperer les commandes en route');
+    throw Exception('Impossible de recuperer les commandes en route $e');
   }
 }
 
