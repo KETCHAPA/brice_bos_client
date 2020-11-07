@@ -63,16 +63,6 @@ class _ShopViewState extends State<ShopView> {
                                         shop: widget.shops[index],
                                       )));
                         },
-                        onDoubleTap: () {
-                          setState(() {
-                            if (favoritesShops.contains(widget.shops[index])) {
-                              favoritesShops.remove(widget.shops[index]);
-                            } else {
-                              favoritesShops.add(widget.shops[index]);
-                            }
-                          });
-                          storeFavoriteShops(favoritesShops);
-                        },
                         child: Container(
                           width: size(context).width / 3,
                           margin: EdgeInsets.only(
@@ -152,13 +142,19 @@ class _ShopViewState extends State<ShopView> {
                                   child: GestureDetector(
                                     onTap: () {
                                       setState(() {
-                                        if (favoritesShops
-                                            .contains(widget.shops[index])) {
+                                        if (favoritesShops.contains(
+                                                widget.shops[index]) ||
+                                            favoriteShopNames.contains(
+                                                widget.shops[index].name)) {
                                           favoritesShops
                                               .remove(widget.shops[index]);
+                                          favoriteShopNames
+                                              .remove(widget.shops[index].name);
                                         } else {
                                           favoritesShops
                                               .add(widget.shops[index]);
+                                          favoriteShopNames
+                                              .add(widget.shops[index].name);
                                         }
                                       });
                                       storeFavoriteShops(favoritesShops);
@@ -172,12 +168,16 @@ class _ShopViewState extends State<ShopView> {
                                       alignment: Alignment.center,
                                       height: size(context).height / 20.0,
                                       child: Icon(
-                                        favoritesShops
-                                                .contains(widget.shops[index])
+                                        favoritesShops.contains(
+                                                    widget.shops[index]) ||
+                                                favoriteShopNames.contains(
+                                                    widget.shops[index].name)
                                             ? Icons.favorite
                                             : YvanIcons.heart,
-                                        color: favoritesShops
-                                                .contains(widget.shops[index])
+                                        color: favoritesShops.contains(
+                                                    widget.shops[index]) ||
+                                                favoriteShopNames.contains(
+                                                    widget.shops[index].name)
                                             ? Colors.red
                                             : Colors.black,
                                         size: size(context).height / 50.0,

@@ -35,6 +35,7 @@ class _HomePageState extends State<HomePage> {
   bool firstEntry = true;
   GlobalKey<RefreshIndicatorState> _refreshKey;
   bool emptyBanners;
+  List _shopsData;
 
   _fetchDataFromServer() async {
     List<Shop> _shop1 = await fetchShops();
@@ -616,10 +617,12 @@ class _HomePageState extends State<HomePage> {
                       );
                     }
                     if (snapshot.hasData) {
-                      List _shopsData = [];
-                      for (var item in snapshot.data) {
-                        if (!_shopsData.contains(item)) {
-                          _shopsData.add(item);
+                      if (_shopsData == null) {
+                        _shopsData = [];
+                        for (var item in snapshot.data) {
+                          if (!_shopsData.contains(item)) {
+                            _shopsData.add(item);
+                          }
                         }
                       }
                       return ShopView(_shopsData);

@@ -174,15 +174,27 @@ class _ShopPageState extends State<ShopPage> {
                                                   onTap: () {
                                                     setState(() {
                                                       if (favoritesShops
-                                                          .contains(snapshot
-                                                              .data[index])) {
+                                                              .contains(
+                                                                  snapshot.data[
+                                                                      index]) ||
+                                                          favoriteShopNames
+                                                              .contains(snapshot
+                                                                  .data[index]
+                                                                  .name)) {
                                                         favoritesShops.remove(
                                                             snapshot
                                                                 .data[index]);
+                                                        favoriteShopNames
+                                                            .remove(snapshot
+                                                                .data[index]
+                                                                .name);
                                                       } else {
                                                         favoritesShops.add(
                                                             snapshot
                                                                 .data[index]);
+                                                        favoriteShopNames.add(
+                                                            snapshot.data[index]
+                                                                .name);
                                                       }
                                                     });
                                                     storeFavoriteShops(
@@ -201,15 +213,25 @@ class _ShopPageState extends State<ShopPage> {
                                                           color: Colors.white),
                                                       child: Icon(
                                                         favoritesShops.contains(
-                                                                snapshot.data[
-                                                                    index])
+                                                                    snapshot.data[
+                                                                        index]) ||
+                                                                favoriteShopNames
+                                                                    .contains(snapshot
+                                                                        .data[
+                                                                            index]
+                                                                        .name)
                                                             ? Icons.favorite
                                                             : Icons
                                                                 .favorite_border,
                                                         color: favoritesShops
-                                                                .contains(
-                                                                    snapshot.data[
-                                                                        index])
+                                                                    .contains(snapshot
+                                                                            .data[
+                                                                        index]) ||
+                                                                favoriteShopNames
+                                                                    .contains(snapshot
+                                                                        .data[
+                                                                            index]
+                                                                        .name)
                                                             ? Colors.red
                                                             : Colors.black,
                                                         size: size(context)

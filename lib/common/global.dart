@@ -416,6 +416,7 @@ List<String> cartNames = [],
     cartDescription = [],
     favoriteDescriptions = [],
     favoriteNames = [],
+    favoriteShopNames = [],
     shopNames = [];
 String userCode = '';
 int userId = 0;

@@ -91,7 +91,7 @@ class _SplashPageState extends State<SplashPage> {
       favoriteNames.add(item.name);
     }
     for (var item in favoritesShops) {
-      favoritesShops.add(item.name);
+      favoriteShopNames.add(item.name);
     }
 
     setNumberOfShopInCommand();
