@@ -129,7 +129,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => RouterPage(
-                                            index: 3,
+                                            index: 4,
                                           )));
                             } else {
                               showDialog(

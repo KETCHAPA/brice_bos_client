@@ -1,12 +1,13 @@
+//Subpage product
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:new_bos_app/addons/search.dart';
 import 'package:new_bos_app/common/global.dart';
 import 'package:new_bos_app/custom/sweetAlert.dart';
+import 'package:new_bos_app/home/router.dart';
 import 'package:new_bos_app/icons/yvan_icons.dart';
 import 'package:new_bos_app/model/shops.dart';
-import 'package:new_bos_app/products/all.dart';
 import 'package:new_bos_app/services/homeService.dart';
 import 'package:sweetalert/sweetalert.dart';
 
@@ -106,7 +107,8 @@ class _ShopPageState extends State<ShopPage> {
                                   onTap: () => Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => AllProductPage(
+                                          builder: (context) => RouterPage(
+                                                index: 1,
                                                 shop: snapshot.data[index],
                                               ))),
                                   child: Column(

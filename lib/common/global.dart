@@ -154,7 +154,7 @@ getParentCategories() async {
       ? []
       : prefs
           .getStringList('parentCategories')
-          .map((item) => Category.fromJson(json.decode((item))));
+          .map((item) => Category.fromJson(json.decode((item)))).toList();
 }
 
 setParentCategories(List<Category> items) async {

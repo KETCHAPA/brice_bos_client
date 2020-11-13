@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:new_bos_app/auth/login.dart';
 import 'package:new_bos_app/auth/register.dart';
 import 'package:new_bos_app/common/global.dart';
-import 'package:new_bos_app/home/home.dart';
+import 'package:new_bos_app/home/router.dart';
 import 'package:new_bos_app/icons/yvan_icons.dart';
 
 class ChoicePage extends StatefulWidget {
@@ -63,7 +64,7 @@ class _ChoicePageState extends State<ChoicePage> {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              RegisterPage(redirection: HomePage()))),
+                              RegisterPage(redirection: RouterPage()))),
                   color: Colors.white,
                   shape: RoundedRectangleBorder(
                       borderRadius:
@@ -97,7 +98,7 @@ class _ChoicePageState extends State<ChoicePage> {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              RegisterPage(redirection: HomePage()))),
+                              LoginPage(redirection: RouterPage()))),
                   color: Colors.black,
                   shape: RoundedRectangleBorder(
                       borderRadius:

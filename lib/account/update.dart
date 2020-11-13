@@ -121,7 +121,7 @@ class _UpdateDataState extends State<UpdateData> {
             context,
             MaterialPageRoute(
                 builder: (context) => RouterPage(
-                      index: 3,
+                      index: 4,
                     )));
       } else {
         sweetalert(
@@ -837,7 +837,7 @@ class _UpdateDataState extends State<UpdateData> {
                   context,
                   MaterialPageRoute(
                       builder: (context) => RouterPage(
-                            index: 3,
+                            index: 4,
                           ))),
               child: Center(
                 child: RichText(

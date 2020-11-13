@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:new_bos_app/common/global.dart';
+import 'package:new_bos_app/home/router.dart';
 import 'package:new_bos_app/icons/yvan_icons.dart';
-import 'package:new_bos_app/model/categories.dart';
 import 'package:new_bos_app/model/products.dart';
 import 'package:new_bos_app/services/appService.dart';
 import 'package:new_bos_app/services/productService.dart';
@@ -20,25 +20,13 @@ class ShowProduct extends StatefulWidget {
 class _ShowProductState extends State<ShowProduct> {
   Future<Map> productSpecs;
   Product product;
-  List<Category> categories = [];
   List categoryMap = [], pics = [];
   int nbrPics = 0;
   Future _reviews;
-  List _colors, _sizes;
-  int _colorIndex, _sizeIndex;
 
   String format(String date) {
     DateTime data = DateTime.parse(date);
     return '${data.day} ${months[data.month - 1]} ${data.year}';
-  }
-
-  String estimateDate() {
-    DateTime now = DateTime.now();
-    DateTime firstDate, secondDate;
-    firstDate = now.add(Duration(hours: 48));
-    secondDate = now.add(Duration(hours: 144));
-
-    return '${firstDate.day} ${months[firstDate.month - 1]} - ${secondDate.day} ${months[secondDate.month - 1]}';
   }
 
   @override
@@ -46,10 +34,6 @@ class _ShowProductState extends State<ShowProduct> {
     super.initState();
     productSpecs = fetchProduct(widget.code);
     _reviews = fetchAllReviews(widget.code);
-    _colors = [Colors.grey, Colors.grey[100], Colors.brown, Colors.orange];
-    _sizes = ['S', 'M', 'L'];
-    _sizeIndex = 0;
-    _colorIndex = 0;
   }
 
   int _selectedItem = 0;
@@ -73,6 +57,17 @@ class _ShowProductState extends State<ShowProduct> {
     );
   }
 
+  /* 
+  String estimateDate() {
+    DateTime now = DateTime.now();
+    DateTime firstDate, secondDate;
+    firstDate = now.add(Duration(hours: 48));
+    secondDate = now.add(Duration(hours: 144));
+
+    return '${firstDate.day} ${months[firstDate.month - 1]} - ${secondDate.day} ${months[secondDate.month - 1]}';
+  }
+ */
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,9 +87,6 @@ class _ShowProductState extends State<ShowProduct> {
         }
         if (snapshot.hasData) {
           product = Product.fromJson(snapshot.data['produit']);
-          categoryMap = snapshot.data['categories'];
-          categories =
-              categoryMap.map((cat) => Category.fromJson(cat)).toList();
           pics = snapshot.data['photos']['pics'];
           nbrPics = snapshot.data['photos']['count'];
           return CustomScrollView(
@@ -103,7 +95,12 @@ class _ShowProductState extends State<ShowProduct> {
                 leading: GestureDetector(
                   onTap: () => Navigator.pop(context),
                   child: GestureDetector(
-                    onTap: () => Navigator.pop(context),
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => RouterPage(
+                                  index: 1,
+                                ))),
                     child: Padding(
                       padding: EdgeInsets.only(top: size(context).height / 30),
                       child: Icon(
@@ -116,7 +113,7 @@ class _ShowProductState extends State<ShowProduct> {
                 floating: true,
                 pinned: false,
                 primary: false,
-                expandedHeight: size(context).height / 1.8,
+                expandedHeight: size(context).height * .72,
                 flexibleSpace: FlexibleSpaceBar(
                   background: PageView.builder(
                     onPageChanged: (index) {
@@ -203,7 +200,6 @@ class _ShowProductState extends State<ShowProduct> {
                   delegate: SliverChildListDelegate([
                 Container(
                   decoration: BoxDecoration(
-                      color: Colors.white,
                       borderRadius: BorderRadius.vertical(
                           top: Radius.circular(size(context).height / 10.0))),
                   margin: EdgeInsets.symmetric(
@@ -230,7 +226,7 @@ class _ShowProductState extends State<ShowProduct> {
                       SizedBox(height: size(context).height / 100.0),
                       Text(product.description),
                       SizedBox(height: size(context).height / 40.0),
-                      Text('Couleur'),
+                      /* Text('Couleur'),
                       SizedBox(height: size(context).height / 100.0),
                       Container(
                         height: size(context).height / 25,
@@ -314,6 +310,7 @@ class _ShowProductState extends State<ShowProduct> {
                         ),
                       ),
                       SizedBox(height: size(context).height / 40.0),
+                       */
                       Text('Metadonnees'),
                       SizedBox(height: size(context).height / 100.0),
                       Row(
@@ -511,7 +508,7 @@ class _ShowProductState extends State<ShowProduct> {
 
                             return loader();
                           }),
-                      SizedBox(height: size(context).height / 40.0),
+                      /* SizedBox(height: size(context).height / 40.0),
                       Row(
                         children: <Widget>[
                           Text(
@@ -524,7 +521,7 @@ class _ShowProductState extends State<ShowProduct> {
                             style: TextStyle(fontWeight: FontWeight.bold),
                           )
                         ],
-                      ),
+                      ), */
                       SizedBox(height: size(context).height / 40.0),
                       Row(
                         children: [

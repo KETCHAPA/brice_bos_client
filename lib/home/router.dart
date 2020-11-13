@@ -2,15 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:new_bos_app/account/account.dart';
 import 'package:new_bos_app/common/global.dart';
+import 'package:new_bos_app/favorites/product.dart';
+import 'package:new_bos_app/favorites/shop.dart';
 import 'package:new_bos_app/home/home.dart';
 import 'package:new_bos_app/icons/yvan_icons.dart';
+import 'package:new_bos_app/model/categories.dart';
+import 'package:new_bos_app/model/shops.dart';
 import 'package:new_bos_app/orders/cart.dart';
 import 'package:new_bos_app/products/all.dart';
 
 class RouterPage extends StatefulWidget {
   final int index;
+  final bool isProduct;
+  final Category category;
+  final Shop shop;
+  final String code;
+  final bool canPopFavorite;
+  final bool showDetails;
+  final List products;
 
-  const RouterPage({Key key, this.index}) : super(key: key);
+  const RouterPage(
+      {Key key,
+      this.index,
+      this.code,
+      this.showDetails,
+      this.isProduct = false,
+      this.canPopFavorite,
+      this.category,
+      this.shop,
+      this.products})
+      : super(key: key);
 
   @override
   _RouterPageState createState() => _RouterPageState();
@@ -26,6 +47,40 @@ class _RouterPageState extends State<RouterPage> {
     } else {
       currentIndex = 0;
     }
+    pages = [
+      FirstIconRouter(),
+      widget.category != null
+          ? AllProductPage(
+              showDetails: widget.showDetails ?? false,
+              productCode: widget.code,
+              category: widget.category,
+            )
+          : widget.products != null
+              ? AllProductPage(
+                  showDetails: widget.showDetails ?? false,
+                  productCode: widget.code,
+                  products: widget.products,
+                )
+              : widget.shop != null
+                  ? AllProductPage(
+                      showDetails: widget.showDetails ?? false,
+                      productCode: widget.code,
+                      shop: widget.shop,
+                    )
+                  : AllProductPage(
+                      showDetails: widget.showDetails ?? false,
+                      productCode: widget.code,
+                    ),
+      widget.isProduct
+          ? FavoriteProducts(
+              canPop: widget.canPopFavorite,
+            )
+          : FavoriteShops(
+              canPop: widget.canPopFavorite,
+            ),
+      CartPage(),
+      AccountPage(),
+    ];
   }
 
   Future<bool> _onWillPop() async {
@@ -52,12 +107,7 @@ class _RouterPageState extends State<RouterPage> {
         });
   }
 
-  List<Widget> pages = [
-    HomePage(),
-    AllProductPage(),
-    CartPage(),
-    AccountPage(),
-  ];
+  List<Widget> pages;
 
   @override
   Widget build(BuildContext context) {
@@ -82,6 +132,8 @@ class _RouterPageState extends State<RouterPage> {
                 icon: Icon(YvanIcons.home_line), title: Text('Home')),
             BottomNavigationBarItem(
                 icon: Icon(YvanIcons.coupon), title: Text('Favoris')),
+            BottomNavigationBarItem(
+                icon: Icon(YvanIcons.heart), title: Text('Boutiques')),
             BottomNavigationBarItem(
                 icon: Icon(YvanIcons.bag), title: Text('Panier')),
             BottomNavigationBarItem(

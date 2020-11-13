@@ -34,11 +34,11 @@ class MyApp extends StatelessWidget {
             ),
         'categories': (context) => AllCategoryPage(),
         'cart': (context) => RouterPage(
-              index: 2,
+              index: 3,
             ),
         'favorites': (context) => FavoriteProducts(),
         'account': (context) => RouterPage(
-              index: 3,
+              index: 4,
             ),
       },
     );

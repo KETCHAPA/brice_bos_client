@@ -21,6 +21,7 @@ class Category {
         id: int.parse(json['id'].toString()),
         code: json['code'],
         name: json['name'],
+        catId: int.parse(json['cat_id'] ?? '0'),
         description: json['description'],
         priority: int.parse(json['priority']),
         photo: json['photo']);

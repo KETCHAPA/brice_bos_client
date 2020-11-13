@@ -1,8 +1,9 @@
+//Subpage product
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:new_bos_app/common/global.dart';
+import 'package:new_bos_app/home/router.dart';
 import 'package:new_bos_app/icons/yvan_icons.dart';
-import 'package:new_bos_app/products/all.dart';
 import 'package:new_bos_app/shop/all.dart';
 
 class ShopView extends StatefulWidget {
@@ -59,7 +60,8 @@ class _ShopViewState extends State<ShopView> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => AllProductPage(
+                                  builder: (context) => RouterPage(
+                                        index: 1,
                                         shop: widget.shops[index],
                                       )));
                         },

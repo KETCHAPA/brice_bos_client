@@ -1,10 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:new_bos_app/common/global.dart';
+import 'package:new_bos_app/home/router.dart';
 import 'package:new_bos_app/icons/yvan_icons.dart';
 import 'package:new_bos_app/products/show.dart';
 
 class FavoriteProducts extends StatefulWidget {
+  final bool canPop;
+
+  const FavoriteProducts({Key key, this.canPop}) : super(key: key);
   @override
   _FavoriteProductsState createState() => _FavoriteProductsState();
 }
@@ -14,19 +18,36 @@ class _FavoriteProductsState extends State<FavoriteProducts> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: Icon(
-            YvanIcons.left_arrow_1,
-            color: Colors.black,
-          ),
-        ),
+        leading: widget.canPop ?? false
+            ? IconButton(
+                onPressed: () => Navigator.pop(context),
+                icon: Icon(
+                  YvanIcons.left_arrow_1,
+                  color: Colors.black,
+                ),
+              )
+            : null,
         centerTitle: true,
         title: Text(
           'Produits favoris',
           style: TextStyle(color: Colors.black),
         ),
         actions: [
+          GestureDetector(
+            onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => RouterPage(
+                          index: 2,
+                          canPopFavorite: true,
+                          isProduct: false,
+                        ))),
+            child: Icon(
+              YvanIcons.add_to_favorite,
+              size: size(context).height / 40.0,
+              color: Colors.black,
+            ),
+          ),
           IconButton(
             icon: Icon(
               YvanIcons.delete_1,

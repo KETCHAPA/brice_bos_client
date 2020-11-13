@@ -38,7 +38,7 @@ class _SplashPageState extends State<SplashPage> {
       await setDailyDeals(_dailyDeals);
       await setBanners(_banners);
       await setAllProducts(_products);
-      await setParentCategories(_parentCategories);
+      await setParentCategories(_parentCategories); 
 
       myFirstConnexion = await isFirstConnexion();
 

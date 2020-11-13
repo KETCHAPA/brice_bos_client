@@ -1,7 +1,8 @@
+//Subpage product
 import 'package:new_bos_app/common/global.dart';
 import 'package:new_bos_app/common/removeAccent.dart';
+import 'package:new_bos_app/home/router.dart';
 import 'package:new_bos_app/model/data.dart';
-import 'package:new_bos_app/products/all.dart';
 import 'package:new_bos_app/products/show.dart';
 
 Future<List<Data>> search(String query) async {
@@ -24,7 +25,8 @@ Future<List<Data>> search(String query) async {
             description: item.description,
             parent: 'Boutiques',
             photo: item.photo,
-            redirection: AllProductPage(
+            redirection: RouterPage(
+              index: 1,
               shop: item,
             )));
       }
@@ -42,7 +44,8 @@ Future<List<Data>> search(String query) async {
             description: item.description,
             parent: 'Categories',
             photo: item.photo,
-            redirection: AllProductPage(
+            redirection: RouterPage(
+              index: 1,
               category: item,
             )));
       }
