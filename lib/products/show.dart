@@ -529,6 +529,7 @@ class _ShowProductState extends State<ShowProduct> {
                             child: RaisedButton(
                               onPressed: () {
                                 setState(() {
+                                  clearShopInCommand();
                                   if (canAddProduct(product)) {
                                     if (cartDescription.contains(product
                                             .description

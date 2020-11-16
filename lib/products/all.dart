@@ -41,7 +41,6 @@ String productCode;
 class _AllProductPageState extends State<AllProductPage> {
   Future products;
   bool bottom = true;
-  List carts;
   String title;
   Future<Map> productSpecs;
   Product product;
@@ -1277,60 +1276,58 @@ class _AllProductPageState extends State<AllProductPage> {
                         children: [
                           Expanded(
                             child: RaisedButton(
-                              onPressed: () {
-                                setState(() {
-                                  if (canAddProduct(product)) {
-                                    if (cartDescription.contains(product
-                                            .description
-                                            .toLowerCase()) &&
-                                        cartNames.contains(
-                                            product.name.toLowerCase())) {
-                                      quantities[cartNames.lastIndexOf(
-                                          product.name.toLowerCase())]++;
-                                      setCartQuantities(quantities);
-                                      evaluateTotal(product.newPrice == 0 ||
-                                              product.newPrice == null
-                                          ? product.oldPrice
-                                          : product.newPrice);
-                                    } else {
-                                      cartNames.add(product.name.toLowerCase());
-                                      cartDescription.add(
-                                          product.description.toLowerCase());
-                                      carts.add(product);
-                                      storeProductCart(carts);
-                                      quantities.add(1);
-                                      setCartQuantities(quantities);
-                                      length = carts.length;
-                                      setCartLength(length);
-                                      evaluateTotal(product.newPrice == 0 ||
-                                              product.newPrice == null
-                                          ? product.oldPrice
-                                          : product.newPrice);
-                                      commandShopIds.add(product.shopId);
-                                      shopNames.add(product.shopName);
-                                      setNumberOfShopInCommand();
-                                    }
-                                    new Future.delayed(new Duration(seconds: 2),
-                                        () {
-                                      SweetAlert.show(context,
-                                          subtitle: 'Produit ajoute au panier',
-                                          style: SweetAlertStyle.success);
-                                    });
+                              onPressed: () => setState(() {
+                                if (canAddProduct(product)) {
+                                  if (cartDescription.contains(
+                                          product.description.toLowerCase()) &&
+                                      cartNames.contains(
+                                          product.name.toLowerCase())) {
+                                    quantities[cartNames.lastIndexOf(
+                                        product.name.toLowerCase())]++;
+                                    setCartQuantities(quantities);
+                                    evaluateTotal(product.newPrice == 0 ||
+                                            product.newPrice == null
+                                        ? product.oldPrice
+                                        : product.newPrice);
                                   } else {
-                                    new Future.delayed(new Duration(seconds: 2),
-                                        () {
-                                      SweetAlert.show(context,
-                                          subtitle:
-                                              'Vous ne pouvez pas commander\n        dans plus de 2 boutiques',
-                                          style: SweetAlertStyle.confirm);
-                                    });
+                                    cartNames.add(product.name.toLowerCase());
+                                    cartDescription
+                                        .add(product.description.toLowerCase());
+                                    carts.add(product);
+                                    storeProductCart(carts);
+                                    quantities.add(1);
+                                    setCartQuantities(quantities);
+                                    length = carts.length;
+                                    setCartLength(length);
+                                    evaluateTotal(product.newPrice == 0 ||
+                                            product.newPrice == null
+                                        ? product.oldPrice
+                                        : product.newPrice);
+                                    commandShopIds.add(product.shopId);
+                                    shopNames.add(product.shopName);
+                                    setNumberOfShopInCommand();
                                   }
-                                  SweetAlert.show(context,
-                                      title: 'Un instant...',
-                                      subtitle: 'Ajout du produit au panier',
-                                      style: SweetAlertStyle.loading);
-                                });
-                              },
+
+                                  new Future.delayed(new Duration(seconds: 2),
+                                      () {
+                                    SweetAlert.show(context,
+                                        subtitle: 'Produit ajoute au panier',
+                                        style: SweetAlertStyle.success);
+                                  });
+                                } else {
+                                  new Future.delayed(new Duration(seconds: 2),
+                                      () {
+                                    SweetAlert.show(context,
+                                        subtitle:
+                                            'Vous ne pouvez pas commander\n        dans plus de 2 boutiques',
+                                        style: SweetAlertStyle.confirm);
+                                  });
+                                }
+                                SweetAlert.show(context,
+                                    title: 'Un instant...',
+                                    subtitle: 'Ajout du produit au panier',
+                                    style: SweetAlertStyle.loading);
+                              }),
                               color: Colors.black,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(

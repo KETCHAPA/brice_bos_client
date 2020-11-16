@@ -154,7 +154,8 @@ getParentCategories() async {
       ? []
       : prefs
           .getStringList('parentCategories')
-          .map((item) => Category.fromJson(json.decode((item)))).toList();
+          .map((item) => Category.fromJson(json.decode((item))))
+          .toList();
 }
 
 setParentCategories(List<Category> items) async {
@@ -364,16 +365,23 @@ logOut() async {
 
 bool canAddProduct(Product product) {
   List _shopIds = [];
+  print(commandShopIds);
   for (var item in commandShopIds) {
     if (!_shopIds.contains(item)) {
       _shopIds.add(item);
     }
   }
   int idOfShop = product.shopId;
+
+  print('ids');
+  print(_shopIds);
+  print(numberOfShopInCommand);
+  print(idOfShop);
   if (_shopIds.contains(idOfShop)) {
     return true;
   } else {
     if (numberOfShopInCommand < 2) {
+      _shopIds.add(idOfShop);
       numberOfShopInCommand++;
       return true;
     } else {
@@ -402,6 +410,9 @@ clearShopInCommand() {
   numberOfShopInCommand = 0;
   commandShopIds = [];
   shopNames = [];
+  cartNames = [];
+  carts = [];
+  cartDescription = [];
 }
 
 List favorites = [],
