@@ -581,8 +581,10 @@ class _AccountPageState extends State<AccountPage> {
                             onTap: () => Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) =>
-                                        RouterPage(index: 2, canPopFavorite: false,))),
+                                    builder: (context) => RouterPage(
+                                          index: 2,
+                                          canPopFavorite: false,
+                                        ))),
                             child: ListTile(
                               contentPadding: EdgeInsets.zero,
                               leading: Icon(
@@ -628,7 +630,10 @@ class _AccountPageState extends State<AccountPage> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => RouterPage(
-                                          index: 2, isProduct: true, canPopFavorite: false,)));
+                                            index: 2,
+                                            isProduct: true,
+                                            canPopFavorite: false,
+                                          )));
                             },
                             child: ListTile(
                               contentPadding: EdgeInsets.zero,
@@ -666,7 +671,7 @@ class _AccountPageState extends State<AccountPage> {
                             onTap: () => launchWhatsApp(
                                 phone: '',
                                 message:
-                                    'Decouvre Buy, On Send la nouvelle application de vente en ligne de particulier a particulier. play.google.com/store/apps/details?id=b2b2c.ecommerce.bos_client_app'),
+                                    'Decouvre Buy, On Send la nouvelle application de vente en ligne de particulier a particulier. play.google.com/store/apps/details?id=com.b2b2c.bosgp'),
                             child: ListTile(
                               contentPadding: EdgeInsets.zero,
                               leading: Icon(
@@ -770,9 +775,9 @@ class _AccountPageState extends State<AccountPage> {
             ),
           ),
           GestureDetector(
-           /*  onTap: () => launchPhoneCall(
-               phone: 'play.google.com/store/apps/details?id=b2b2c.ecommerce.bos_client_app'),
-            */ child: ListTile(
+            onTap: () => launchURL(
+                url: 'https://play.google.com/store/apps/details?id=com.b2b2c.bosgp'),
+            child: ListTile(
                 leading: Icon(
                   YvanIcons.blue_girl_character,
                   size: size(context).height / 30.0,
