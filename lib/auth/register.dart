@@ -77,43 +77,7 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   setPage(int page) {
-    if (page == 1) {
-      if (_loginController.text.isNotEmpty &&
-          _passwordController.text.isNotEmpty &&
-          _cPasswordController.text.isNotEmpty) {
-        setPage(1);
-      } else {
-        sweetalert(
-            context: context,
-            withConfirmation: false,
-            subtitle: 'Remplissez tous les champs',
-            type: SweetAlertStyle.confirm);
-      }
-    } else if (page == 2) {
-      if (_nameController.text.isNotEmpty &&
-          _emailController.text.isNotEmpty &&
-          _phoneController.text.isNotEmpty) {
-        setPage(2);
-      } else {
-        sweetalert(
-            context: context,
-            withConfirmation: false,
-            subtitle: 'Remplissez tous les champs',
-            type: SweetAlertStyle.confirm);
-      }
-    } else if (page == 3) {
-      if (_country != null &&
-          _town != null &&
-          _addressController.text.isNotEmpty) {
-        setPage(3);
-      } else {
-        sweetalert(
-            context: context,
-            withConfirmation: false,
-            subtitle: 'Remplissez tous les champs',
-            type: SweetAlertStyle.confirm);
-      }
-    }
+    setState(() => _currentPage = page);
   }
 
   String name = '', base64Image = '';
@@ -234,17 +198,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 textInputAction: TextInputAction.done,
                 onFieldSubmitted: (val) {
                   _cPasswordNode.unfocus();
-                  if (_loginController.text.isNotEmpty &&
-                      _passwordController.text.isNotEmpty &&
-                      _cPasswordController.text.isNotEmpty) {
-                    setPage(1);
-                  } else {
-                    sweetalert(
-                        context: context,
-                        withConfirmation: false,
-                        subtitle: 'Remplissez tous les champs',
-                        type: SweetAlertStyle.confirm);
-                  }
                 },
                 style: TextStyle(color: Colors.black),
                 decoration: InputDecoration(
@@ -324,17 +277,6 @@ class _RegisterPageState extends State<RegisterPage> {
                     focusNode: _phoneNode,
                     onFieldSubmitted: (val) {
                       _phoneNode.unfocus();
-                      if (_nameController.text.isNotEmpty &&
-                          _emailController.text.isNotEmpty &&
-                          _phoneController.text.isNotEmpty) {
-                        setPage(2);
-                      } else {
-                        sweetalert(
-                            context: context,
-                            withConfirmation: false,
-                            subtitle: 'Remplissez tous les champs',
-                            type: SweetAlertStyle.confirm);
-                      }
                     },
                     style: TextStyle(color: Colors.black),
                     decoration: InputDecoration(
@@ -552,17 +494,6 @@ class _RegisterPageState extends State<RegisterPage> {
                         keyboardType: TextInputType.text,
                         onFieldSubmitted: (val) {
                           _addressNode.unfocus();
-                          if (_country != null &&
-                              _town != null &&
-                              _addressController.text.isNotEmpty) {
-                            setPage(3);
-                          } else {
-                            sweetalert(
-                                context: context,
-                                withConfirmation: false,
-                                subtitle: 'Remplissez tous les champs',
-                                type: SweetAlertStyle.confirm);
-                          }
                         },
                         decoration: InputDecoration(
                             suffixIcon: Icon(
@@ -589,7 +520,6 @@ class _RegisterPageState extends State<RegisterPage> {
                         textInputAction: TextInputAction.done,
                         onFieldSubmitted: (val) {
                           _streetNode.unfocus();
-                          _register(context);
                         },
                         decoration: InputDecoration(
                             suffixIcon: Icon(
@@ -807,9 +737,61 @@ class _RegisterPageState extends State<RegisterPage> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                                 size(context).height / 10.0)),
-                        onPressed: () => _currentPage < 3
-                            ? setPage(++_currentPage)
-                            : _register(context),
+                        onPressed: () {
+                          if (_currentPage < 3) {
+                            if (_currentPage == 0) {
+                              if (_loginController.text.isNotEmpty &&
+                                  _passwordController.text.isNotEmpty &&
+                                  _cPasswordController.text.isNotEmpty &&
+                                  _cPasswordController.text ==
+                                      _passwordController.text) {
+                                setPage(++_currentPage);
+                              } else {
+                                if (_cPasswordController.text !=
+                                    _passwordController.text) {
+                                  sweetalert(
+                                      context: context,
+                                      withConfirmation: false,
+                                      subtitle:
+                                          'Mots de passes ne coincident pas',
+                                      type: SweetAlertStyle.confirm);
+                                } else {
+                                  sweetalert(
+                                      context: context,
+                                      withConfirmation: false,
+                                      subtitle: 'Remplissez tous les champs',
+                                      type: SweetAlertStyle.confirm);
+                                }
+                              }
+                            } else if (_currentPage == 1) {
+                              if (_nameController.text.isNotEmpty &&
+                                  _emailController.text.isNotEmpty &&
+                                  _phoneController.text.isNotEmpty) {
+                                setPage(++_currentPage);
+                              } else {
+                                sweetalert(
+                                    context: context,
+                                    withConfirmation: false,
+                                    subtitle: 'Remplissez tous les champs',
+                                    type: SweetAlertStyle.confirm);
+                              }
+                            } else if (_currentPage == 2) {
+                              if (_country != null &&
+                                  _town != null &&
+                                  _addressController.text.isNotEmpty) {
+                                setPage(++_currentPage);
+                              } else {
+                                sweetalert(
+                                    context: context,
+                                    withConfirmation: false,
+                                    subtitle: 'Remplissez tous les champs',
+                                    type: SweetAlertStyle.confirm);
+                              }
+                            }
+                          } else {
+                            _register(context);
+                          }
+                        },
                         child: Container(
                           alignment: Alignment.center,
                           padding: EdgeInsets.symmetric(
@@ -817,7 +799,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           child: Text(
                             _currentPage > 2
                                 ? 'Inscription'
-                                : 'Etape ${_currentPage + 1} / 4',
+                                : 'Etape ${_currentPage + 1} / 3',
                             style: TextStyle(color: Colors.black),
                           ),
                         ),
@@ -829,7 +811,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             borderRadius: BorderRadius.circular(
                                 size(context).height / 10.0)),
                         onPressed: () => _currentPage == 0
-                            ? Navigator.push(
+                            ? Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => widget.redirection))

@@ -157,8 +157,6 @@ class _UpdateDataState extends State<UpdateData> {
                   focusColor: Colors.orange,
                   focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black)),
-                  labelStyle: TextStyle(color: Colors.black38),
-                  labelText: 'Nom d\'utilisateur',
                   hintText: '${widget.user['login'] ?? 'Non renseigne'}',
                 ),
               ),
@@ -185,9 +183,7 @@ class _UpdateDataState extends State<UpdateData> {
                   focusColor: Colors.orange,
                   focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black)),
-                  labelStyle: TextStyle(color: Colors.black38),
-                  labelText: 'Mot de passe',
-                  hintText: '************',
+                  hintText: '**********',
                 ),
               ),
               SizedBox(
@@ -200,7 +196,6 @@ class _UpdateDataState extends State<UpdateData> {
                 textInputAction: TextInputAction.done,
                 onFieldSubmitted: (val) {
                   _cPasswordNode.unfocus();
-                  setPage(1);
                 },
                 style: TextStyle(color: Colors.black),
                 decoration: InputDecoration(
@@ -209,13 +204,11 @@ class _UpdateDataState extends State<UpdateData> {
                     color: Colors.black,
                     size: size(context).height / 40.0,
                   ),
-                  labelStyle: TextStyle(color: Colors.black38),
                   border: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black)),
                   focusColor: Colors.orange,
                   focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black)),
-                  labelText: 'Confirmation',
                   hintText: '**********',
                 ),
               ),
@@ -244,8 +237,6 @@ class _UpdateDataState extends State<UpdateData> {
                       focusColor: Colors.orange,
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.black)),
-                      labelStyle: TextStyle(color: Colors.black38),
-                      labelText: 'Nom complet',
                       hintText: '${widget.user['name'] ?? 'Non renseigne'}',
                     ),
                   ),
@@ -272,8 +263,6 @@ class _UpdateDataState extends State<UpdateData> {
                       focusColor: Colors.orange,
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.black)),
-                      labelStyle: TextStyle(color: Colors.black38),
-                      labelText: 'Email',
                       hintText: '${widget.user['email'] ?? 'Non renseigne'}',
                     ),
                   ),
@@ -286,7 +275,6 @@ class _UpdateDataState extends State<UpdateData> {
                     focusNode: _phoneNode,
                     onFieldSubmitted: (val) {
                       _phoneNode.unfocus();
-                      setPage(2);
                     },
                     style: TextStyle(color: Colors.black),
                     decoration: InputDecoration(
@@ -295,13 +283,11 @@ class _UpdateDataState extends State<UpdateData> {
                         color: Colors.black,
                         size: size(context).height / 40.0,
                       ),
-                      labelStyle: TextStyle(color: Colors.black38),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.black)),
                       focusColor: Colors.orange,
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.black)),
-                      labelText: 'Telephone',
                       hintText: '${widget.user['phone'] ?? 'Non renseigne'}',
                     ),
                   ),
@@ -506,8 +492,6 @@ class _UpdateDataState extends State<UpdateData> {
                         keyboardType: TextInputType.text,
                         onFieldSubmitted: (val) {
                           _addressNode.unfocus();
-
-                          setPage(3);
                         },
                         decoration: InputDecoration(
                           suffixIcon: Icon(
@@ -520,8 +504,6 @@ class _UpdateDataState extends State<UpdateData> {
                           focusColor: Colors.orange,
                           focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.black)),
-                          labelStyle: TextStyle(color: Colors.black38),
-                          labelText: 'Adresse',
                           hintText:
                               '${widget.user['address'] ?? 'Non renseigne'}',
                         ),
@@ -537,7 +519,6 @@ class _UpdateDataState extends State<UpdateData> {
                         textInputAction: TextInputAction.done,
                         onFieldSubmitted: (val) {
                           _streetNode.unfocus();
-                          _update(context);
                         },
                         decoration: InputDecoration(
                           suffixIcon: Icon(
@@ -550,8 +531,6 @@ class _UpdateDataState extends State<UpdateData> {
                           focusColor: Colors.orange,
                           focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.black)),
-                          labelStyle: TextStyle(color: Colors.black38),
-                          labelText: 'Rue (optionnelle)',
                           hintText:
                               '${widget.user['street'] ?? 'Non renseigne'}',
                         ),
@@ -781,13 +760,13 @@ class _UpdateDataState extends State<UpdateData> {
                       ),
                       RaisedButton(
                         elevation: 0.0,
-                        color:
-                            _currentPage == 0 ? Colors.black54 : Colors.black,
+                        color: Colors.black,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                                 size(context).height / 10.0)),
-                        onPressed: () =>
-                            _currentPage == 0 ? null : setPage(--_currentPage),
+                        onPressed: () => _currentPage == 0
+                            ? Navigator.pop(context)
+                            : setPage(--_currentPage),
                         child: Container(
                           alignment: Alignment.center,
                           padding: EdgeInsets.symmetric(
@@ -795,9 +774,7 @@ class _UpdateDataState extends State<UpdateData> {
                           child: Text(
                             'Retour',
                             style: TextStyle(
-                              color: _currentPage == 0
-                                  ? Colors.white54
-                                  : Colors.white,
+                              color: Colors.white,
                             ),
                           ),
                         ),

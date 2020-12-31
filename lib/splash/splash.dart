@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:new_bos_app/common/global.dart';
 import 'package:new_bos_app/custom/sweetAlert.dart';
 import 'package:new_bos_app/model/categories.dart';
@@ -38,7 +39,7 @@ class _SplashPageState extends State<SplashPage> {
       await setDailyDeals(_dailyDeals);
       await setBanners(_banners);
       await setAllProducts(_products);
-      await setParentCategories(_parentCategories); 
+      await setParentCategories(_parentCategories);
 
       myFirstConnexion = await isFirstConnexion();
 
@@ -98,6 +99,10 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   startTime() {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarColor: Colors.black,
+        statusBarBrightness: Brightness.light,
+        statusBarIconBrightness: Brightness.light));
     Duration _duration = new Duration(seconds: 1);
     return new Timer(_duration, navigationBar);
   }

@@ -415,108 +415,173 @@ class _AccountPageState extends State<AccountPage> {
                                 thickness: 2.0,
                               ),
                             ),
-                            FutureBuilder(
-                                future: getCurrentUser(),
-                                builder: (context, userSnapshot) {
-                                  if (userSnapshot.hasError) {
-                                    return Center(
-                                      child: Text('Rafraichir la page'),
-                                    );
-                                  }
-                                  if (userSnapshot.hasData) {
-                                    return Center(
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          GestureDetector(
-                                            onTap: !isLoggedIn
-                                                ? null
-                                                : () {
-                                                    Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                UpdateData(
-                                                                    user: userSnapshot
-                                                                        .data)));
-                                                  },
-                                            child: Card(
-                                              elevation: 7.0,
-                                              child: Container(
+                            !isLoggedIn
+                                ? Center(
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        GestureDetector(
+                                          child: Card(
+                                            elevation: 7.0,
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        size(context).height /
+                                                            100.0),
+                                                color: Colors.black45,
+                                              ),
+                                              alignment: Alignment.center,
+                                              width: size(context).width / 2.5,
+                                              height: double.infinity,
+                                              child: Text(
+                                                'MODIFIER',
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize:
+                                                        size(context).height /
+                                                            42.0),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: size(context).height / 30.0,
+                                        ),
+                                        GestureDetector(
+                                          child: Card(
+                                            color: Colors.white,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      size(context).height /
+                                                          100.0),
+                                            ),
+                                            elevation: 7.0,
+                                            child: Container(
                                                 decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           size(context).height /
                                                               100.0),
-                                                  color: !isLoggedIn
-                                                      ? Colors.black45
-                                                      : Colors.black,
+                                                  color: Colors.white,
                                                 ),
                                                 alignment: Alignment.center,
-                                                width:
-                                                    size(context).width / 2.5,
-                                                height: double.infinity,
-                                                child: Text(
-                                                  'MODIFIER',
-                                                  style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize:
-                                                          size(context).height /
-                                                              42.0),
+                                                width: size(context).width / 7,
+                                                child: Icon(
+                                                  YvanIcons.message_2_line,
+                                                  color: Colors.black45,
+                                                  size:
+                                                      size(context).height / 35,
+                                                )),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                : FutureBuilder(
+                                    future: getCurrentUser(),
+                                    builder: (context, userSnapshot) {
+                                      if (userSnapshot.hasError) {
+                                        return Center(
+                                          child: Text('Rafraichir la page'),
+                                        );
+                                      }
+                                      if (userSnapshot.hasData) {
+                                        return Center(
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              GestureDetector(
+                                                onTap: () {
+                                                  Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              UpdateData(
+                                                                  user: userSnapshot
+                                                                      .data)));
+                                                },
+                                                child: Card(
+                                                  elevation: 7.0,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              size(context)
+                                                                      .height /
+                                                                  100.0),
+                                                      color: Colors.black,
+                                                    ),
+                                                    alignment: Alignment.center,
+                                                    width: size(context).width /
+                                                        2.5,
+                                                    height: double.infinity,
+                                                    child: Text(
+                                                      'MODIFIER',
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize:
+                                                              size(context)
+                                                                      .height /
+                                                                  42.0),
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: size(context).height / 30.0,
-                                          ),
-                                          GestureDetector(
-                                            onTap: !isLoggedIn
-                                                ? null
-                                                : () => Navigator.push(
+                                              SizedBox(
+                                                width:
+                                                    size(context).height / 30.0,
+                                              ),
+                                              GestureDetector(
+                                                onTap: () => Navigator.push(
                                                     context,
                                                     MaterialPageRoute(
                                                         builder: (context) =>
                                                             NewMailPage())),
-                                            child: Card(
-                                              color: Colors.white,
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        size(context).height /
-                                                            100.0),
-                                              ),
-                                              elevation: 7.0,
-                                              child: Container(
-                                                  decoration: BoxDecoration(
+                                                child: Card(
+                                                  color: Colors.white,
+                                                  shape: RoundedRectangleBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             size(context)
                                                                     .height /
                                                                 100.0),
-                                                    color: Colors.white,
                                                   ),
-                                                  alignment: Alignment.center,
-                                                  width:
-                                                      size(context).width / 7,
-                                                  child: Icon(
-                                                    YvanIcons.message_2_line,
-                                                    color: !isLoggedIn
-                                                        ? Colors.black45
-                                                        : Colors.black,
-                                                    size: size(context).height /
-                                                        35,
-                                                  )),
-                                            ),
+                                                  elevation: 7.0,
+                                                  child: Container(
+                                                      decoration: BoxDecoration(
+                                                        borderRadius: BorderRadius
+                                                            .circular(size(
+                                                                        context)
+                                                                    .height /
+                                                                100.0),
+                                                        color: Colors.white,
+                                                      ),
+                                                      alignment:
+                                                          Alignment.center,
+                                                      width:
+                                                          size(context).width /
+                                                              7,
+                                                      child: Icon(
+                                                        YvanIcons
+                                                            .message_2_line,
+                                                        color: Colors.black,
+                                                        size: size(context)
+                                                                .height /
+                                                            35,
+                                                      )),
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                        ],
-                                      ),
-                                    );
-                                  }
-                                  return Center(child: loader());
-                                }),
+                                        );
+                                      }
+                                      return Center(child: loader());
+                                    }),
                           ],
                         ),
                       ),
@@ -776,7 +841,8 @@ class _AccountPageState extends State<AccountPage> {
           ),
           GestureDetector(
             onTap: () => launchURL(
-                url: 'https://play.google.com/store/apps/details?id=com.b2b2c.bosgp'),
+                url:
+                    'https://play.google.com/store/apps/details?id=com.b2b2c.bosgp'),
             child: ListTile(
                 leading: Icon(
                   YvanIcons.blue_girl_character,
